@@ -9,6 +9,8 @@ ENV XDG_CONFIG_HOME="/config/xdg"
 ENV LADTEMP root/etc/cont-init.d
 
 RUN \
+	# make directory
+  	mkdir -p ${LADTEMP} && \
 	# Download Statup Script
 	curl -o "${LADTEMP}/lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash"
 
