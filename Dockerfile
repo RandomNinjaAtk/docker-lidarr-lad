@@ -12,7 +12,7 @@ RUN \
 	# make directory
   	mkdir -p ${LADTEMP} && \
 	# Download Statup Script
-	curl -o " ${LADTEMP}/lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash"
+	curl -o "${LADTEMP}/lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash"
 
 # ports and volumes
 EXPOSE 8686 1730
