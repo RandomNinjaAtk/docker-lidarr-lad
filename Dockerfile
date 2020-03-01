@@ -6,7 +6,7 @@ ARG LIDARR_BRANCH="nightly"
 ENV XDG_CONFIG_HOME="/config/xdg"
 
 RUN \
-	mkdir -p /config/custom-cont-init.d \
+	mkdir -p /config/custom-cont-init.d && \
 	curl -o "/config/custom-cont-init.d/lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash" && \
 	bash /config/custom-cont-init.d/lidarr-automated-installer.bash && \
 	rm /config/custom-cont-init.d/lidarr-automated-installer.bash && \
