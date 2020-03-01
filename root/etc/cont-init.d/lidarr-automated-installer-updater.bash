@@ -1,10 +1,6 @@
 #!/bin/bash
 echo "==========start lidarr-automated-installer automated updates==========="
 
-
-# stop cron
-service cron stop
-
 echo "INSTALLING DEEZLOADER-REMIX"
 
 rm -rf /deezloaderremix && \
@@ -97,13 +93,36 @@ if [ -d "/config/xdg" ]; then
 	chmod 0777 -R /config/xdg
 fi
 
+
+
 # Start Deezloader
 echo "Starting Deezloader Remix"
 nohup node /deezloaderremix/app/app.js &>/dev/null &
 sleep 20s
 
-# start cron
-service cron start
+if [ -x "$(command -v crontab)" ]; then	
+	if grep "lidarr-automated-downloader-start.bash" /etc/crontab | read; then
+		echo "job already added..."
+	else
+		echo "adding cron job to crontab..."
+		echo "*/15 * * * *   root   bash /config/scripts/lidarr-automated-downloader-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab"
+	fi
+	if grep "musicbrainzerror.log" /etc/crontab | read; then
+		echo "job already added..."
+	else
+		echo "adding cron job to crontab..."
+		echo "0 18 * * *   root   rm \"/config/scripts/lidarr-automated-downloader/musicbrainzerror.log\" && touch \"/config/scripts/lidarr-automated-downloader/musicbrainzerror.log\""  >> "/etc/crontab"
+	fi
+	if grep "daily.log" /etc/crontab | read; then
+		echo "job already added..."
+	else
+		echo "adding cron job to crontab..."
+		echo "5 18 * * *   root   rm \"/config/scripts/lidarr-automated-downloader/daily.log\" && touch \"/config/scripts/lidarr-automated-downloader/daily.log\""  >> "/etc/crontab"
+	fi
+	service cron restart
+else
+	echo "cron NOT INSTALLED"
+fi
 
 echo "==========end start lidarr-automated-installer automated updates==========="
 exit 0
