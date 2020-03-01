@@ -20,7 +20,7 @@ ln -sf /downloads/deezloaderremix "/root/Deezloader Music" && \
 cd / && \
 if [ -f /development.zip  ]; then
 	rm /development.zip 
-	sleep 1s
+	sleep 0.1
 fi
 
 wget https://notabug.org/RemixDevs/DeezloaderRemix/archive/development.zip && \
