@@ -4,7 +4,7 @@ echo "==========start lidarr-automated-installer automated updates==========="
 echo "INSTALLING DEEZLOADER-REMIX"
 
 if [ -d "/deezloaderremix" ]; then
-	rm -rf /deezloaderremix && \
+	rm -rf /deezloaderremix
 fi
 
 if [ -d "/config/xdg" ]; then
