@@ -19,7 +19,7 @@ RUN \
 	apt-get clean \
 	
 	# Start Cron
-	service cron start
+	service cron start \
 	
 	# Setup Cron Jobs
 	echo "*/15 * * * *   root   bash /config/scripts/lidarr-automated-downloader-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
