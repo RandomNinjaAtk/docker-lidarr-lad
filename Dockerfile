@@ -17,5 +17,5 @@ RUN \
 # ports and volumes
 EXPOSE 8686 1730
 VOLUME /config /downloads /music
+COPY config/custom-cont-init.d/ ${LADTEMP}/
 COPY root/ /
-COPY statup-script/ /config/custom-cont-init.d
