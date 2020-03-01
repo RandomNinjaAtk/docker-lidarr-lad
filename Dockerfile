@@ -1,6 +1,7 @@
 FROM linuxserver/lidarr:preview
 
 # environment settings
+LABEL maintainer="RandomNinjaAtk"
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG LIDARR_BRANCH="nightly"
 ENV XDG_CONFIG_HOME="/config/xdg"
@@ -14,4 +15,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8686 1730
-VOLUME /config /downloads /music
+VOLUME /config
