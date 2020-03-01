@@ -6,7 +6,7 @@ LABEL maintainer="RandomNinjaAtk"
 ARG DEBIAN_FRONTEND="noninteractive"
 ARG LIDARR_BRANCH="nightly"
 ENV XDG_CONFIG_HOME="/config/xdg"
-ENV LADTEMP /statup-script
+ENV LADTEMP /config/custom-cont-init.d
 
 RUN \
 	# make directory
@@ -17,5 +17,4 @@ RUN \
 # ports and volumes
 EXPOSE 8686 1730
 VOLUME /config /downloads /music
-COPY config/custom-cont-init.d/ ${LADTEMP}/
 COPY root/ /
