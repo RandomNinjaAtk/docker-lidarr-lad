@@ -8,10 +8,11 @@ ARG LIDARR_BRANCH="nightly"
 ENV XDG_CONFIG_HOME="/config/xdg"
 
 RUN \
+	mkdir -p /root-layer && \
 	# Download Statup Script
-	curl -o "lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash"
+	curl -o "/root-layer/lidarr-automated-installer.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-installer.bash"
 
 # ports and volumes
 EXPOSE 8686 1730
 VOLUME /config /downloads /music
-COPY lidarr-automated-installer.bash /etc/cont-init.d/lidarr-automated-installer.bash
+COPY /root-layer/lidarr-automated-installer.bash /etc/cont-init.d/lidarr-automated-installer.bash
