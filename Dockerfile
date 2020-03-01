@@ -2,6 +2,7 @@ FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
 RUN \
+	# install dependancies
 	curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 	apt-get update -qq && \
 	apt-get install -qq -y \
@@ -17,13 +18,14 @@ RUN \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean \
-	
+	# restart cron
 	service cron restart \
-	
 	# Setup Cron Jobs
 	echo "*/15 * * * *   root   bash /config/scripts/lidarr-automated-downloader-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
-	echo "0 0 * * SAT   root   rm \"/config/scripts/lidarr-automated-downloader/download.log\""  >> "/etc/crontab" && \
-		
+	echo "0 0 * * SAT   root   rm \"/config/scripts/lidarr-automated-downloader/download.log\""  >> "/etc/crontab"
+	# restart cron
+	service cron restart
+	
 # copy local files
 COPY root/ /
 
