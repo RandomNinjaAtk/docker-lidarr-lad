@@ -5,10 +5,7 @@ ENV docker="true"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
-ENV LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"
 ENV deezloaderurl="http://127.0.0.1:1730"
-ENV amount="1000000000"
-
 
 RUN \
 	# install dependancies
