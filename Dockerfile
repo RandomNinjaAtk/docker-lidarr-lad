@@ -1,11 +1,12 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV docker="true"
+ENV DOCKER="true"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 ENV deezloaderurl="http://127.0.0.1:1730"
+ENV QUALITY_TEST="FLAC"
 
 RUN \
 	# install dependancies
