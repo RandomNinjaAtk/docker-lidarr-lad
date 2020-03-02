@@ -61,9 +61,9 @@ RUN \
 	sed -i "s/\"producer\": false/\"producer\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"multitagSeparator\": \"; \"/\"multitagSeparator\": \"andFeat\"/g" "/deezloaderremix/app/default.json"
 	# Install deezloader
-	cd /deezloaderremix && \
+	cd deezloaderremix && \
 	npm install && \
-	cd /deezloaderremix/app && \
+	cd deezloaderremix/app && \
 	npm install
 
 # copy local files
