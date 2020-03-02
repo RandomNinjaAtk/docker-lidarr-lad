@@ -6,7 +6,6 @@ ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 ENV deezloaderurl="http://127.0.0.1:1730"
-ENV QUALITY_TEST="FLAC"
 
 RUN \
 	# install dependancies
@@ -24,10 +23,7 @@ RUN \
 		ffmpeg \
 		cron && \
 	apt-get purge --auto-remove -y && \
-	apt-get clean \
-	# create config
-	touch "root/config-test" \
-	echo "qualitytest=\"$QUALITY_TEST\"" >> "root/config-test"
+	apt-get clean
 	
 # copy local files
 COPY root/ /
