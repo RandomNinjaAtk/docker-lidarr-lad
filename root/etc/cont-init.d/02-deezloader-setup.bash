@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 echo "INSTALLING DEEZLOADER-REMIX"
 
