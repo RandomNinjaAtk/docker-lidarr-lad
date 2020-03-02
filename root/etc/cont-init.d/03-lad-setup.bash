@@ -117,7 +117,7 @@ echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/lidarr-automated-dow
 echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "qualitytest=\"$QUALITYTEST\"" >> "/config/scripts/lidarr-automated-downloader/config"
+echo 'qualitytest=\"$QUALITYTEST\"' >> "/config/scripts/lidarr-automated-downloader/config"
 
 
 # Set permissions
