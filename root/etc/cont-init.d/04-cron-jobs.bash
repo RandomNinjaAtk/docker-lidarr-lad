@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 echo "==========start cron job setup==========="
 
 # stop cron
