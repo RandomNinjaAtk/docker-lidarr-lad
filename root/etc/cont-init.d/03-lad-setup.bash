@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-echo "==========start lidarr-automated-downloader setup==========="
+echo "Updating LAD scripts..."
 
 if [ ! -d /config/scripts ]; then
 	echo "setting up script directory"
@@ -127,5 +127,5 @@ if [ -d "/config/xdg" ]; then
 	chmod 0777 -R /config/xdg
 fi
 
-echo "==========end lidarr-automated-downloader setup==========="
+echo "Complete..."
 exit 0
