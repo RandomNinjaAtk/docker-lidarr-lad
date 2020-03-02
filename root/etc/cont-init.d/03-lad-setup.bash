@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 echo "==========start lidarr-automated-downloader setup==========="
 
 if [ ! -d /config/scripts ]; then
