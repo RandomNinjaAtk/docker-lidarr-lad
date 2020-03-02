@@ -119,6 +119,9 @@ echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr
 echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "qualitytest=\"${QUALITY_TEST}\"" >> "/config/scripts/lidarr-automated-downloader/config"
 
+if [ -f "/config-test" ]; then
+	mv "/config-test" "/config/scripts/lidarr-automated-downloader/config-test"
+fi
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
