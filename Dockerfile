@@ -24,7 +24,9 @@ RUN \
 		ffmpeg \
 		cron && \
 	apt-get purge --auto-remove -y && \
-	apt-get clean
+	apt-get clean \
+	# create config
+	echo "qualitytest=\"${QUALITY_TEST}\"" >> "root/config-test"
 	
 # copy local files
 COPY root/ /
