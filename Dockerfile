@@ -1,6 +1,9 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
+ENV downloaddir="/downloads/deezloaderremix"
+ENV LidarrImportLocation="/downloads/lidarr-import"
+
 RUN \
 	# install dependancies
 	curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
