@@ -63,6 +63,28 @@ cd /deezloaderremix/app && \
 npm install && \
 cd / && \
 
+if [ ! -d /config/scripts ]; then
+	echo "setting up script directory"
+	mkdir -p /config/scripts
+	echo "done"
+fi
+
+if [ -f /config/scripts/lidarr-download-automation-start.bash ]; then
+	rm /config/scripts/lidarr-automated-downloader-start.bash
+	sleep 0.1
+fi
+
+if [ ! -f /config/scripts/lidarr-download-automation-start.bash ]; then
+	echo "downloading lidarr-automated-downloader-start.bash from: https://github.com/RandomNinjaAtk/lidarr-automated-downloader/blob/master/docker/lidarr-automated-downloader-start.bash"
+	curl -o "/config/scripts/lidarr-automated-downloader-start.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-start.bash"
+	echo "done"
+fi
+
+# Remove lock file incase, system was rebooted before script finished
+if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
+	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
+fi
+
 if [ ! -d /config/scripts/lidarr-automated-downloader ]; then
     echo "setting up script lidarr-automated-downloader directory..."
     mkdir -p /config/scripts/lidarr-automated-downloader
