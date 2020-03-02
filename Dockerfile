@@ -30,7 +30,7 @@ RUN \
 	wget https://notabug.org/RemixDevs/DeezloaderRemix/archive/development.zip && \
 	unzip development.zip && \
 	rm development.zip && \
-	# Update deezloader config settings
+	# Customize Deezloader Config
 	sed -i "s/\"trackNameTemplate\": \"%artist% - %title%\"/\"trackNameTemplate\": \"%disc%%number% - %title% %explicit%\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"albumTrackNameTemplate\": \"%number% - %title%\"/\"albumTrackNameTemplate\": \"%disc%%number% - %title% %explicit%\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/deezloaderremix/app/default.json" && \
@@ -60,11 +60,18 @@ RUN \
 	sed -i "s/\"engineer\": false/\"engineer\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"producer\": false/\"producer\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"multitagSeparator\": \"; \"/\"multitagSeparator\": \"andFeat\"/g" "/deezloaderremix/app/default.json"
-	# Install deezloader
-	cd deezloaderremix && \
-	npm install && \
-	cd deezloaderremix/app && \
+
+WORKDIR /deezloaderremix
+
+RUN \
 	npm install
+
+WORKDIR /deezloaderremix/app
+
+RUN \
+	npm install
+
+WORKDIR /
 
 # copy local files
 COPY root/ /
