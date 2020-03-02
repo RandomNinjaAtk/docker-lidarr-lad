@@ -118,15 +118,6 @@ echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/lidarr-automated-dow
 echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "qualitytest=\"${QUALITY_TEST}\"" >> "/config/scripts/lidarr-automated-downloader/config"
-
-if [ -f "/config/scripts/lidarr-automated-downloader/config-test" ]; then
-	rm "/config/scripts/lidarr-automated-downloader/config-test"
-fi
-
-if [ -f "/root/config-test" ]; then
-	mv "/root/config-test" "/config/scripts/lidarr-automated-downloader/config-test"
-fi
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
