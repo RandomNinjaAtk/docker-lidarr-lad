@@ -26,7 +26,8 @@ RUN \
 	apt-get purge --auto-remove -y && \
 	apt-get clean \
 	# create config
-	echo "qualitytest=\"${QUALITY_TEST}\"" >> "root/config-test"
+	touch "root/config-test" \
+	echo "qualitytest=\"$QUALITY_TEST\"" >> "root/config-test"
 	
 # copy local files
 COPY root/ /
