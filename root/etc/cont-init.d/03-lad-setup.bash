@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source ~/.bashrc
 
 echo "==========start lidarr-automated-downloader setup==========="
 
