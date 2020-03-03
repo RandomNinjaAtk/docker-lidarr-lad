@@ -1,7 +1,7 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.0.0"
+ENV VERSION="1.0.1"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
@@ -21,6 +21,7 @@ RUN \
 		git \
 		jq \
 		ffmpeg \
+		opus-tools \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean
