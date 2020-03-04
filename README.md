@@ -33,7 +33,6 @@ Container images are configured using parameters passed at runtime (such as thos
 | Parameter | Function |
 | --- | --- |
 | `-p 8686` | Application WebUI |
-| `-p 1730` | DL Client WebUI |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
@@ -53,7 +52,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e ReplaygainTagging=TRUE` | TRUE = ENABLED :: adds replaygain tags for compatible players (FLAC ONLY) |
 | `-e FolderPermissions=777` | Based on chmod linux permissions |
 | `-e FilePermissions=666` | Based on chmod linux permissions |
-| `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first and fallsback to Deezer |
+| `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first with a fallback using LAD as the source |
 
 
 # LAD Information
