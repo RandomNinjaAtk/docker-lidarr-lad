@@ -60,15 +60,26 @@ Container images are configured using parameters passed at runtime (such as thos
 * Script is scheduled to run every 15 minutes via a cron job
 * Script files are stored in the following dirctories:
   * /config/scripts/
-  * /config/scripts/00-lidarr-automated-downloader.exclusivelock/ (prevents multiple executions of script via cron)
+  * /config/scripts/00-lidarr-automated-downloader.exclusivelock/
+    * Prevents multiple executions of script via cron
   * /config/scripts/lidarr-automated-downloader/
-  * /config/scripts/lidarr-automated-downloader/cache/ (contains all cached album-lists to speed up results)
+  * /config/scripts/lidarr-automated-downloader/cache/
+    * Contains all cached album-lists to speed up results
 * File explanations:
-  * cron-job.log (log of last attempt to execute)
-  * script-run.log (current log of script run, can be seen in normal docker log)
-  * lidarr-automated-downloader-start.bash (bash file that runs the script, executed automatically by cron job every 15 minutes)
-  * lidarr-automated-downloader.bash (LAD script, this file is updated on every container start from the github repo)
-  * config (File contains all configured settings from provided ENVIRONMENT variables, see [Parameters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#paramaters))
-  * notfound.log (log file containing list of albums that could not be found using normal or fuzzy matching)
-  * musicbrainzerror.log (log file containing list of artists without links, open log for more details)
+  * cron-job.log
+    * Log of last attempt to execute
+  * script-run.log
+    * Current log of script run, can be seen in normal docker log
+  * lidarr-automated-downloader-start.bash
+    * Bash file that runs the script, executed automatically by cron job every 15 minutes
+  * lidarr-automated-downloader.bash
+    * LAD script, this file is updated on every container start from the github repo
+  * config
+    * File contains all configured settings from provided ENVIRONMENT variables, see [Parameters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#parameters)
+  * notfound.log
+    * Log file containing list of albums that could not be found using normal or fuzzy matching, automatically cleared every Saturday via cron
+  * musicbrainzerror.log
+    * Log file containing list of artists without links, open log for more details
+  * download.log
+    * Log file containing list of albums that were downloaded, automatically cleared every Saturday via cron
     
