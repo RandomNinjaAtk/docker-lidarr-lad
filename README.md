@@ -33,7 +33,6 @@ Container images are configured using parameters passed at runtime (such as thos
 | Parameter | Function |
 | --- | --- |
 | `-p 8686` | Application WebUI |
-| `-p 1730` | DL Client WebUI |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
@@ -53,18 +52,17 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e ReplaygainTagging=TRUE` | TRUE = ENABLED :: adds replaygain tags for compatible players (FLAC ONLY) |
 | `-e FolderPermissions=777` | Based on chmod linux permissions |
 | `-e FilePermissions=666` | Based on chmod linux permissions |
-| `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first and fallsback to Deezer |
+| `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first with a fallback using LAD as the source |
 
 
 # LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
 * Script files are stored in the following dirctories:
   * /config/scripts/
+  * /config/scripts/cache/
+    * Contains all cached album-lists to speed up results
   * /config/scripts/00-lidarr-automated-downloader.exclusivelock/
     * Prevents multiple executions of script via cron
-  * /config/scripts/lidarr-automated-downloader/
-  * /config/scripts/lidarr-automated-downloader/cache/
-    * Contains all cached album-lists to speed up results
 * File explanations:
   * cron-job.log
     * Log of last attempt to execute
