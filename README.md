@@ -54,3 +54,20 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e FolderPermissions=777` | Based on chmod linux permissions |
 | `-e FilePermissions=666` | Based on chmod linux permissions |
 | `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first and fallsback to Deezer |
+
+
+## LAD Information
+* Script is scheduled to run every 15 minutes via a cron job
+* Script files are stored in the following directory
+  * /config/scripts
+    * cron-job.log (log of last attempt to execute)
+    * script-run.log (current log of script run, can be seen in normal docker log)
+    * lidarr-automated-downloader-start.bash (bash file that runs the script, executed automatically by cron job every 15 minutes)
+  * config/scripts/00-lidarr-automated-downloader.exclusivelock (prevents multiple executions of script via cron)
+  * /config/scripts/lidarr-automated-downloader
+    * lidarr-automated-downloader.bash (LAD script, this file is updated on every container start from the github repo)
+    * config (File contains all configured settings from provided ENVIRONMENT variables, see [Paremeters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#paramaters)
+    * notfound.log (log file containing list of albums that could not be found using normal or fuzzy matching)
+    * musicbrainzerror.log (log file containing list of artists without links, open log for more details)
+  * /config/scripts/lidarr-automated-downloader/cache (contains all cached album-lists to speed up results)
+    
