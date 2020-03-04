@@ -68,7 +68,7 @@ Container images are configured using parameters passed at runtime (such as thos
   * script-run.log (current log of script run, can be seen in normal docker log)
   * lidarr-automated-downloader-start.bash (bash file that runs the script, executed automatically by cron job every 15 minutes)
   * lidarr-automated-downloader.bash (LAD script, this file is updated on every container start from the github repo)
-  * config (File contains all configured settings from provided ENVIRONMENT variables, see [Parameters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#paramaters)
+  * config (File contains all configured settings from provided ENVIRONMENT variables, see [Parameters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#paramaters))
   * notfound.log (log file containing list of albums that could not be found using normal or fuzzy matching)
   * musicbrainzerror.log (log file containing list of artists without links, open log for more details)
     
