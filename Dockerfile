@@ -28,12 +28,10 @@ RUN \
 	
 RUN \
 	# Download script
-	mkdir /scripts && \
-	curl -o "/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
-	curl -o "/scripts/lidarr-automated-downloader-start.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-start.bash" && \
+	curl -o "root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
 	# setup cron
 	service cron start && \
-	echo "*/15 * * * *   root   bash /config/scripts/lidarr-automated-downloader-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
+	echo "*/15 * * * *   root   bash /config/scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
 	echo "0 0 * * SAT   root   rm \"/config/scripts/download.log\""  >> "/etc/crontab" && \
 	echo "0 0 * * SAT   root   rm \"/config/scripts/notfound.log\""  >> "/etc/crontab"
 
