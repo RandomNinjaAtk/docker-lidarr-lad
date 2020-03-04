@@ -30,7 +30,7 @@ RUN \
 	# Download script
 	mkdir /scripts && \
 	curl -o "/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
-	curl -o "scripts/lidarr-automated-downloader-start.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-start.bash" && \
+	curl -o "/scripts/lidarr-automated-downloader-start.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-start.bash" && \
 	ln -sf /scripts /config/scripts && \
 	# setup cron
 	service cron start && \
