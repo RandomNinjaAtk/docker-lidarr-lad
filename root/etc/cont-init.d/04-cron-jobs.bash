@@ -18,6 +18,13 @@ else
 	echo "0 0 * * SAT   root   rm \"/config/scripts/lidarr-automated-downloader/download.log\""  >> "/etc/crontab"
 fi
 
+# add notfound log cleanup job
+if grep "notfound.log" /etc/crontab | read; then
+	sleep 0.1
+else
+	echo "0 0 * * SAT   root   rm \"/config/scripts/lidarr-automated-downloader/notfound.log\""  >> "/etc/crontab"
+fi
+
 # start cron
 service cron start
 

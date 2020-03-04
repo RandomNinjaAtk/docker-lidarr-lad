@@ -99,6 +99,9 @@ fi
 if [ -z "$downloaddir" ]; then
 	downloaddir="/downloads/deezloaderremix"
 fi
+if [ -z "$DownLoadArtistArtwork" ]; then
+	DownLoadArtistArtwork="false"
+fi
 
 touch "/config/scripts/lidarr-automated-downloader/config"
 echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/lidarr-automated-downloader/config"
@@ -118,6 +121,7 @@ echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/lidarr-automated-dow
 echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr-automated-downloader/config"
 echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
+echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/lidarr-automated-downloader/config"
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
