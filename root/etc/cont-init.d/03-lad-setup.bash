@@ -2,7 +2,6 @@
 
 echo "Updating LAD scripts..."
 
-
 # Remove lock file incase, system was rebooted before script finished
 if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
 	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
@@ -10,8 +9,8 @@ fi
 
 # Delete existing config file to update from settings
 
-if [ -f "/config/scripts/lidarr-automated-downloader/config" ]; then
-	rm "/config/scripts/lidarr-automated-downloader/config"
+if [ -f "/config/scripts/config" ]; then
+	rm "/config/scripts/config"
 	sleep 0.1
 fi
 
@@ -69,25 +68,25 @@ if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="false"
 fi
 
-touch "/config/scripts/lidarr-automated-downloader/config"
-echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/lidarr-automated-downloader/config"
-echo "downloadmethod=\"$downloadmethod\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "enablefallback=\"$enablefallback\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "dlcheck=$dlcheck" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "FilePermissions=\"$FilePermissions\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "FolderPermissions=\"$FolderPermissions\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "amount=\"$amount\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "quality=\"$quality\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/lidarr-automated-downloader/config"
+touch "/config/scripts/config"
+echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/config"
+echo "downloadmethod=\"$downloadmethod\"" >> "/config/scripts/config"
+echo "enablefallback=\"$enablefallback\"" >> "/config/scripts/config"
+echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/config/scripts/config"
+echo "dlcheck=$dlcheck" >> "/config/scripts/config"
+echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/config/scripts/config"
+echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/config/scripts/config"
+echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/config/scripts/config"
+echo "FilePermissions=\"$FilePermissions\"" >> "/config/scripts/config"
+echo "FolderPermissions=\"$FolderPermissions\"" >> "/config/scripts/config"
+echo "amount=\"$amount\"" >> "/config/scripts/config"
+echo "quality=\"$quality\"" >> "/config/scripts/config"
+echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/config/scripts/config"
+echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/config"
+echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/config"
+echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/config"
+echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/config"
+echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/config"
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
