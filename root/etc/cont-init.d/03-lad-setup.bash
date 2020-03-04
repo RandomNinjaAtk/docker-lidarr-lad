@@ -2,13 +2,32 @@
 
 echo "Updating LAD scripts..."
 
+# Remove existing LAD start script
+if [ -f "/config/scripts/lidarr-automated-downloader-start.bash" ]; then
+	rm "/config/scripts/lidarr-automated-downloader-start.bash"
+fi
+
+# Copy LAD into scripts start directory
+if [ ! -f "/config/scripts/lidarr-automated-downloader-start.bash" ]; then
+	cp "/scripts/lidarr-automated-downloader-start.bash" "/config/scripts/lidarr-automated-downloader-start.bash"
+fi
+
+# Remove existing LAD script
+if [ -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+	rm "/config/scripts/lidarr-automated-downloader.bash"
+fi
+
+# Copy LAD into scripts directory
+if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+	cp "/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
+fi
+
 # Remove lock file incase, system was rebooted before script finished
 if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
 	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
 fi
 
 # Delete existing config file to update from settings
-
 if [ -f "/config/scripts/config" ]; then
 	rm "/config/scripts/config"
 	sleep 0.1
