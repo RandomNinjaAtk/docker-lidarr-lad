@@ -56,7 +56,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e DownLoadArtistArtwork=false` | true = enabled :: Uses Lidarr Artist artwork first and fallsback to Deezer |
 
 
-## LAD Information
+# LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
 * Script files are stored in the following dirctories:
   * /config/scripts/
@@ -82,4 +82,24 @@ Container images are configured using parameters passed at runtime (such as thos
     * Log file containing list of artists without links, open log for more details
   * download.log
     * Log file containing list of albums that were downloaded, automatically cleared every Saturday via cron
-    
+ 
+# Lidarr Configuration Recommendations
+
+## Media Management Settings:
+* Disable Track Naming
+
+
+#### Track Naming:
+
+* Artist Folder: `{Artist Name}{ (Artist Disambiguation)}`
+* Album Folder: `{Artist Name}{ - ALBUM TYPE}{ - Release Year} - {Album Title}{ ( Album Disambiguation)}`
+
+#### Importing:
+* Enable Import Extra Files
+  * `lrc,jpg,png`
+
+#### File Management
+* Change File Date: Album Release Date
+ 
+#### Permissions
+* Enable Set Permissions
