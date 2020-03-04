@@ -87,6 +87,7 @@ Container images are configured using parameters passed at runtime (such as thos
 
 ## Media Management Settings:
 * Disable Track Naming
+  * Disabling track renaming enables synced lyrics that are imported as extras to be utilized by media players that support using them
 
 
 #### Track Naming:
