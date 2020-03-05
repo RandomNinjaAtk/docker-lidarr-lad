@@ -28,7 +28,7 @@ RUN \
 	
 RUN \
 	# Download script
-	curl -o "root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
+	curl -o "/root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
 	# setup cron
 	service cron start && \
 	echo "*/15 * * * *   root   bash /config/scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
