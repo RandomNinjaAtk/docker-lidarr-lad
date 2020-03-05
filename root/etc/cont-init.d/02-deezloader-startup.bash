@@ -1,15 +1,20 @@
 #!/usr/bin/with-contenv bash
 
 # remove old config
-if [ -f "/config/xdg/Deezloader Remix/config.json" ]; then
-	rm "/config/xdg/Deezloader Remix/config.json"
+if [ -f "/xdg/Deezloader Remix/config.json" ]; then
+	rm "/xdg/Deezloader Remix/config.json"
 	sleep 0.1
 fi
 
 # clean log folder
-if [ -d "/config/xdg/Deezloader Remix/logs" ]; then
-	rm "/config/xdg/Deezloader Remix/logs"/*
+if [ -d "/xdg/Deezloader Remix/logs" ]; then
+	rm "/xdg/Deezloader Remix/logs"/*
 	sleep 0.1
+fi
+
+# remove legacy xdg directory
+if [ -d "/config/xdg" ]; then
+	rm -rf "/config/xdg"
 fi
 
 # create downloads directory
