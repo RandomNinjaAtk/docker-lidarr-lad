@@ -15,6 +15,7 @@ fi
 # remove legacy xdg directory
 if [ -d "/config/xdg" ]; then
 	rm -rf "/config/xdg"
+	sleep 0.1
 fi
 
 # create downloads directory
