@@ -128,7 +128,7 @@ echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/lad-config"
 echo "downloaddir=\"$downloaddir\"" >> "/lad-config"
 echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/lad-config"
 
-# Modify script with config
+# Modify script with config location
 sed -i "s/source .\/config/source \/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
 # Set permissions
