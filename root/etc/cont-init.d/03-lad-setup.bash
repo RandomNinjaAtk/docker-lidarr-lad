@@ -2,6 +2,17 @@
 
 echo "Updating LAD scripts..."
 
+# Remove legacy LAD directory
+if [ -d /config/scripts/lidarr-automated-downloader ]; then
+	rm -rf "/config/scripts/lidarr-automated-downloader"
+fi
+
+# Remove legacy lock directory
+if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
+	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
+fi
+
+# create scripts directory if missing
 if [ ! -d "/config/scripts" ]; then
 	mkdir -p  "/config/scripts"
 fi
