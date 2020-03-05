@@ -1,7 +1,8 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.5.1"
+ENV VERSION="1.5.2"
+ENV XDG_CONFIG_HOME="/xdg"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
