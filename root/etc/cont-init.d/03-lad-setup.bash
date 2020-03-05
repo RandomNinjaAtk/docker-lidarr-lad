@@ -2,6 +2,11 @@
 
 echo "Updating LAD scripts..."
 
+if [ ! -d "/config/scripts" ]; then
+	mkdir -p  "/config/scripts"
+fi
+
+
 # Remove existing LAD start script
 if [ -f "/config/scripts/lad-start.bash" ]; then
 	rm "/config/scripts/lad-start.bash"
