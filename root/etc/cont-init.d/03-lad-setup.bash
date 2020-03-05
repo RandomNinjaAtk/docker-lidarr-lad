@@ -48,6 +48,12 @@ if [ -f "/config/scripts/config" ]; then
 	sleep 0.1
 fi
 
+# Delete existing config file to update from settings
+if [ -f "/lad-config" ]; then
+	rm "/lad-config"
+	sleep 0.1
+fi
+
 # Create config file
 
 if [ -z "$downloadmethod" ]; then
@@ -102,25 +108,28 @@ if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="false"
 fi
 
-touch "/config/scripts/config"
-echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/config"
-echo "downloadmethod=\"$downloadmethod\"" >> "/config/scripts/config"
-echo "enablefallback=\"$enablefallback\"" >> "/config/scripts/config"
-echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/config/scripts/config"
-echo "dlcheck=$dlcheck" >> "/config/scripts/config"
-echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/config/scripts/config"
-echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/config/scripts/config"
-echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/config/scripts/config"
-echo "FilePermissions=\"$FilePermissions\"" >> "/config/scripts/config"
-echo "FolderPermissions=\"$FolderPermissions\"" >> "/config/scripts/config"
-echo "amount=\"$amount\"" >> "/config/scripts/config"
-echo "quality=\"$quality\"" >> "/config/scripts/config"
-echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/config/scripts/config"
-echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/config"
-echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/config"
-echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/config"
-echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/config"
-echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/config"
+touch "/lad-config"
+echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/lad-config"
+echo "downloadmethod=\"$downloadmethod\"" >> "/lad-config"
+echo "enablefallback=\"$enablefallback\"" >> "/lad-config"
+echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/lad-config"
+echo "dlcheck=$dlcheck" >> "/lad-config"
+echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/lad-config"
+echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/lad-config"
+echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/lad-config"
+echo "FilePermissions=\"$FilePermissions\"" >> "/lad-config"
+echo "FolderPermissions=\"$FolderPermissions\"" >> "/lad-config"
+echo "amount=\"$amount\"" >> "/lad-config"
+echo "quality=\"$quality\"" >> "/lad-config"
+echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/lad-config"
+echo "deezloaderurl=\"$deezloaderurl\"" >> "/lad-config"
+echo "LidarrUrl=\"$LidarrUrl\"" >> "/lad-config"
+echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/lad-config"
+echo "downloaddir=\"$downloaddir\"" >> "/lad-config"
+echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/lad-config"
+
+# Modify script with config location
+sed -i "s/source .\/config/source \/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;

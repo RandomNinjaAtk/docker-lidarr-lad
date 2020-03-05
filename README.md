@@ -39,7 +39,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /music` | Music files. |
-| `-v /downloads` | Path to your download folder for music. (<strong>DO NOT DELETE</strong>, this is a required path)|
+| `-v /downloads` | Path to your download folder for music. (<strong>DO NOT DELETE, this is a required path</strong>)|
 | `-e downloadmethod=album` | SET TO: album or track :: album method will fallback to track method if it runs into an issue |
 | `-e enablefallback=true` | true = enabled :: enables fallback to lower quality if required... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
@@ -64,8 +64,6 @@ Container images are configured using parameters passed at runtime (such as thos
 * <strong>/config/scripts/00-lad-start.exclusivelock</strong>
   * Prevents multiple executions of script via cron
 ### Files:
-* <strong>config</strong>
-  * <strong>(DO NOT MODIFY!)</strong> File contains all configured settings from provided ENVIRONMENT variables, see [Parameters](https://github.com/RandomNinjaAtk/docker-lidarr-lad#parameters)
 * <strong>lidarr-automated-downloader.bash</strong>
   * LAD script, this file is updated on every image update
 * <strong>lad-start.bash</strong>
