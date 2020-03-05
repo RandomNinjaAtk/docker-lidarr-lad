@@ -28,6 +28,7 @@ RUN \
 	
 RUN \
 	# Download script
+	mkdir -p "/root/scripts" && \
 	curl -o "/root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
 	# setup cron
 	service cron start && \
