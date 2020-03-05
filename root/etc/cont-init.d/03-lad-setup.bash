@@ -6,7 +6,6 @@ if [ ! -d "/config/scripts" ]; then
 	mkdir -p  "/config/scripts"
 fi
 
-
 # Remove existing LAD start script
 if [ -f "/config/scripts/lad-start.bash" ]; then
 	rm "/config/scripts/lad-start.bash"
@@ -115,6 +114,9 @@ echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/conf
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
+
+# start cron
+service cron start
 
 echo "Complete..."
 exit 0
