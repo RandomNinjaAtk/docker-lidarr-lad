@@ -19,7 +19,7 @@ fi
 
 # Copy LAD into scripts directory
 if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
-	cp "/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
+	cp "/root/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
 fi
 
 # Remove lock file incase, system was rebooted before script finished
