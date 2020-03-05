@@ -126,8 +126,9 @@ echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/conf
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
 
+echo "Complete..."
+
 # start cron
 service cron start
 
-echo "Complete..."
 exit 0
