@@ -1,7 +1,7 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.0.2"
+ENV VERSION="1.5.0"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
@@ -25,6 +25,16 @@ RUN \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean
+	
+RUN \
+	# Download script
+	mkdir -p "/root/scripts" && \
+	curl -o "/root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
+	# setup cron
+	service cron start && \
+	echo "*/15 * * * *   root   bash /config/scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
+	echo "0 0 * * SAT   root   rm \"/config/scripts/download.log\""  >> "/etc/crontab" && \
+	echo "0 0 * * SAT   root   rm \"/config/scripts/notfound.log\""  >> "/etc/crontab"
 
 RUN \
 	# Download Deezloader
@@ -78,5 +88,5 @@ WORKDIR /
 COPY root/ /
 
 # ports and volumes
-EXPOSE 8686 1730
+EXPOSE 8686
 VOLUME /config /downloads /music

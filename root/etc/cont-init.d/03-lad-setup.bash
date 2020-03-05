@@ -2,50 +2,49 @@
 
 echo "Updating LAD scripts..."
 
-if [ ! -d /config/scripts ]; then
-	echo "setting up script directory"
-	mkdir -p /config/scripts
-	echo "done"
+# Remove legacy LAD directory
+if [ -d /config/scripts/lidarr-automated-downloader ]; then
+	rm -rf "/config/scripts/lidarr-automated-downloader"
 fi
 
-if [ -f /config/scripts/lidarr-download-automation-start.bash ]; then
-	rm /config/scripts/lidarr-automated-downloader-start.bash
-	sleep 0.1
-fi
-
-if [ ! -f /config/scripts/lidarr-download-automation-start.bash ]; then
-	echo "downloading lidarr-automated-downloader-start.bash from: https://github.com/RandomNinjaAtk/lidarr-automated-downloader/blob/master/docker/lidarr-automated-downloader-start.bash"
-	curl -o "/config/scripts/lidarr-automated-downloader-start.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/docker/lidarr-automated-downloader-start.bash"
-	echo "done"
-fi
-
-# Remove lock file incase, system was rebooted before script finished
+# Remove legacy lock directory
 if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
 	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
 fi
 
-if [ ! -d /config/scripts/lidarr-automated-downloader ]; then
-    echo "setting up script lidarr-automated-downloader directory..."
-    mkdir -p /config/scripts/lidarr-automated-downloader
-    echo "done"
-fi
-	
-# Download Scripts
-if [ -f "/config/scripts/lidarr-automated-downloader/lidarr-automated-downloader.bash" ]; then
-	rm /config/scripts/lidarr-automated-downloader/lidarr-automated-downloader.bash
-	sleep 0.1
+# create scripts directory if missing
+if [ ! -d "/config/scripts" ]; then
+	mkdir -p  "/config/scripts"
 fi
 
-if [ ! -f "/config/scripts/lidarr-automated-downloader/lidarr-automated-downloader.bash" ]; then
-    echo "downloading lidarr-automated-downloader.bash from: https://github.com/RandomNinjaAtk/lidarr-automated-downloader/blob/master/lidarr-automated-downloader.bash"
-    curl -o "/config/scripts/lidarr-automated-downloader/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash"
-    echo "done"
+# Remove existing LAD start script
+if [ -f "/config/scripts/lad-start.bash" ]; then
+	rm "/config/scripts/lad-start.bash"
+fi
+
+# Copy LAD into scripts start directory
+if [ ! -f "/config/scripts/lad-start.bash" ]; then
+	cp "/scripts/lad-start.bash" "/config/scripts/lad-start.bash"
+fi
+
+# Remove existing LAD script
+if [ -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+	rm "/config/scripts/lidarr-automated-downloader.bash"
+fi
+
+# Copy LAD into scripts directory
+if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+	cp "/root/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
+fi
+
+# Remove lock file incase, system was rebooted before script finished
+if [ -d "/config/scripts/00-lad-start.exclusivelock" ]; then
+	rmdir "/config/scripts/00-lad-start.exclusivelock"
 fi
 
 # Delete existing config file to update from settings
-
-if [ -f "/config/scripts/lidarr-automated-downloader/config" ]; then
-	rm "/config/scripts/lidarr-automated-downloader/config"
+if [ -f "/config/scripts/config" ]; then
+	rm "/config/scripts/config"
 	sleep 0.1
 fi
 
@@ -103,33 +102,33 @@ if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="false"
 fi
 
-touch "/config/scripts/lidarr-automated-downloader/config"
-echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/lidarr-automated-downloader/config"
-echo "downloadmethod=\"$downloadmethod\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "enablefallback=\"$enablefallback\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "dlcheck=$dlcheck" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "FilePermissions=\"$FilePermissions\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "FolderPermissions=\"$FolderPermissions\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "amount=\"$amount\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "quality=\"$quality\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/lidarr-automated-downloader/config"
-echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/lidarr-automated-downloader/config"
+touch "/config/scripts/config"
+echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/config/scripts/config"
+echo "downloadmethod=\"$downloadmethod\"" >> "/config/scripts/config"
+echo "enablefallback=\"$enablefallback\"" >> "/config/scripts/config"
+echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/config/scripts/config"
+echo "dlcheck=$dlcheck" >> "/config/scripts/config"
+echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/config/scripts/config"
+echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/config/scripts/config"
+echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/config/scripts/config"
+echo "FilePermissions=\"$FilePermissions\"" >> "/config/scripts/config"
+echo "FolderPermissions=\"$FolderPermissions\"" >> "/config/scripts/config"
+echo "amount=\"$amount\"" >> "/config/scripts/config"
+echo "quality=\"$quality\"" >> "/config/scripts/config"
+echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/config/scripts/config"
+echo "deezloaderurl=\"$deezloaderurl\"" >> "/config/scripts/config"
+echo "LidarrUrl=\"$LidarrUrl\"" >> "/config/scripts/config"
+echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/config/scripts/config"
+echo "downloaddir=\"$downloaddir\"" >> "/config/scripts/config"
+echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/config/scripts/config"
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
 
-if [ -d "/config/xdg" ]; then
-	chmod 0777 -R /config/xdg
-fi
-
 echo "Complete..."
+
+# start cron
+service cron start
+
 exit 0
