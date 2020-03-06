@@ -43,7 +43,6 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e downloadmethod=album` | SET TO: album or track :: album method will fallback to track method if it runs into an issue |
 | `-e enablefallback=true` | true = enabled :: enables fallback to lower quality if required... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
-| `-e dlcheck=3` | Set the number to desired wait time before checking for completed downloads (if your connection is unstable, longer may be better) |
 | `-e albumtimeoutpercentage=8` | Set the number between 1 and 100 :: This number is used to caculate album download timeout length by multiplying Album Length by ##% |
 | `-e tracktimeoutpercentage=25` | Set the number between 1 and 100 :: This number is used to caculate  track download timeout length by multiplying Track Length by ##% |
 | `-e amount=1000000000` | Maximum: 1000000000 :: Number of missing/cutoff albums to look for... |
