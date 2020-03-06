@@ -86,7 +86,7 @@ if [ -z "$amount" ]; then
 	amount="1000000000"
 fi
 if [ -z "$quality" ]; then
-	quality="FLAC"
+	quality="MP3"
 fi
 if [ -z "$ConversionBitrate" ]; then
 	ConversionBitrate="320"
@@ -104,7 +104,7 @@ if [ -z "$downloaddir" ]; then
 	downloaddir="/downloads/deezloaderremix"
 fi
 if [ -z "$DownLoadArtistArtwork" ]; then
-	DownLoadArtistArtwork="false"
+	DownLoadArtistArtwork="true"
 fi
 
 touch "/scripts/lad-config"
