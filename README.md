@@ -61,14 +61,10 @@ Container images are configured using parameters passed at runtime (such as thos
 * <strong>/config/scripts</strong>
 * <strong>/config/scripts/cache</strong>
   * Contains all cached album-lists to speed up results
-* <strong>/config/scripts/00-lad-start.exclusivelock</strong>
-  * Prevents multiple executions of script via cron
 
 ## Files:
 * <strong>lidarr-automated-downloader.bash</strong>
   * LAD script, this file is updated on every image update
-* <strong>lad-start.bash</strong>
-  * Bash file that runs the script, executed automatically by cron job every 15 minutes
 * <strong>cron-job.log</strong>
   * Log of last attempt to execute
 * <strong>script-run.log</strong>
