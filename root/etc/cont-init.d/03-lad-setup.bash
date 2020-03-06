@@ -65,9 +65,6 @@ fi
 if [ -z "$VerifyTrackCount" ]; then
 	VerifyTrackCount="true"
 fi
-if [ -z "$dlcheck" ]; then
-	dlcheck=3
-fi
 if [ -z "$albumtimeoutpercentage" ]; then
 	albumtimeoutpercentage=8
 fi
@@ -113,7 +110,6 @@ echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;
 echo "downloadmethod=\"$downloadmethod\"" >> "/lad-config"
 echo "enablefallback=\"$enablefallback\"" >> "/lad-config"
 echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/lad-config"
-echo "dlcheck=$dlcheck" >> "/lad-config"
 echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/lad-config"
 echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/lad-config"
 echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/lad-config"
