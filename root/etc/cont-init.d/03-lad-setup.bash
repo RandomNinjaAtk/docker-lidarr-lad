@@ -22,14 +22,10 @@ if [ -f "/config/scripts/lad-start.bash" ]; then
 	rm "/config/scripts/lad-start.bash"
 fi
 
-# Copy LAD into scripts start directory
-if [ ! -f "/config/scripts/lad-start.bash" ]; then
-	cp "/scripts/lad-start.bash" "/config/scripts/lad-start.bash"
-fi
-
 # Remove existing LAD script
 if [ -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
 	rm "/config/scripts/lidarr-automated-downloader.bash"
+	sleep 0.1
 fi
 
 # Copy LAD into scripts directory
@@ -38,9 +34,15 @@ if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
 fi
 
 # Remove lock file incase, system was rebooted before script finished
+if [ -d "/scripts/00-lad-start.exclusivelock" ]; then
+	rmdir "/scripts/00-lad-start.exclusivelock"
+fi
+
+# Remove legacy lock file incase
 if [ -d "/config/scripts/00-lad-start.exclusivelock" ]; then
 	rmdir "/config/scripts/00-lad-start.exclusivelock"
 fi
+
 
 # Delete existing config file to update from settings
 if [ -f "/config/scripts/config" ]; then
@@ -49,8 +51,8 @@ if [ -f "/config/scripts/config" ]; then
 fi
 
 # Delete existing config file to update from settings
-if [ -f "/lad-config" ]; then
-	rm "/lad-config"
+if [ -f "/scripts/lad-config" ]; then
+	rm "/scripts/lad-config"
 	sleep 0.1
 fi
 
@@ -105,27 +107,27 @@ if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="false"
 fi
 
-touch "/lad-config"
-echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/lad-config"
-echo "downloadmethod=\"$downloadmethod\"" >> "/lad-config"
-echo "enablefallback=\"$enablefallback\"" >> "/lad-config"
-echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/lad-config"
-echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/lad-config"
-echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/lad-config"
-echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/lad-config"
-echo "FilePermissions=\"$FilePermissions\"" >> "/lad-config"
-echo "FolderPermissions=\"$FolderPermissions\"" >> "/lad-config"
-echo "amount=\"$amount\"" >> "/lad-config"
-echo "quality=\"$quality\"" >> "/lad-config"
-echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/lad-config"
-echo "deezloaderurl=\"$deezloaderurl\"" >> "/lad-config"
-echo "LidarrUrl=\"$LidarrUrl\"" >> "/lad-config"
-echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/lad-config"
-echo "downloaddir=\"$downloaddir\"" >> "/lad-config"
-echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/lad-config"
+touch "/scripts/lad-config"
+echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/scripts/lad-config"
+echo "downloadmethod=\"$downloadmethod\"" >> "/scripts/lad-config"
+echo "enablefallback=\"$enablefallback\"" >> "/scripts/lad-config"
+echo "VerifyTrackCount=\"$VerifyTrackCount\"" >> "/scripts/lad-config"
+echo "albumtimeoutpercentage=$albumtimeoutpercentage" >> "/scripts/lad-config"
+echo "tracktimeoutpercentage=$tracktimeoutpercentage" >> "/scripts/lad-config"
+echo "ReplaygainTagging=\"$ReplaygainTagging\"" >> "/scripts/lad-config"
+echo "FilePermissions=\"$FilePermissions\"" >> "/scripts/lad-config"
+echo "FolderPermissions=\"$FolderPermissions\"" >> "/scripts/lad-config"
+echo "amount=\"$amount\"" >> "/scripts/lad-config"
+echo "quality=\"$quality\"" >> "/scripts/lad-config"
+echo "ConversionBitrate=\"$ConversionBitrate\"" >> "/scripts/lad-config"
+echo "deezloaderurl=\"$deezloaderurl\"" >> "/scripts/lad-config"
+echo "LidarrUrl=\"$LidarrUrl\"" >> "/scripts/lad-config"
+echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/scripts/lad-config"
+echo "downloaddir=\"$downloaddir\"" >> "/scripts/lad-config"
+echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/scripts/lad-config"
 
 # Modify script with config location
-sed -i "s/source .\/config/source \/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
+sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
