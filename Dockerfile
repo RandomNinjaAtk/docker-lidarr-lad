@@ -1,5 +1,11 @@
-FROM linuxserver/lidarr:preview
+ARG ffmpeg_tag=snapshot-ubuntu
+ARG sonarr_tag=preview
+FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
+FROM linuxserver/sonarr:${sonarr_tag}
 LABEL maintainer="RandomNinjaAtk"
+
+# Add files from ffmpeg
+COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="1.6.0"
 ENV XDG_CONFIG_HOME="/xdg"
@@ -21,7 +27,6 @@ RUN \
 		nodejs \
 		git \
 		jq \
-		ffmpeg \
 		opus-tools \
 		cron && \
 	apt-get purge --auto-remove -y && \
