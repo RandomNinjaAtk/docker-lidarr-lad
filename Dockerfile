@@ -34,10 +34,10 @@ RUN \
 
 RUN \
 	# ffmpeg
-	  chgrp users /usr/local/bin/ffmpeg && \
-	  chgrp users /usr/local/bin/ffprobe && \
-	  chmod g+x /usr/local/bin/ffmpeg && \
-	  chmod g+x /usr/local/bin/ffprobe
+	chgrp users /usr/local/bin/ffmpeg && \
+	chgrp users /usr/local/bin/ffprobe && \
+	chmod g+x /usr/local/bin/ffmpeg && \
+	chmod g+x /usr/local/bin/ffprobe
 	
 RUN \
 	# Download script
