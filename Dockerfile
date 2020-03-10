@@ -1,7 +1,11 @@
+FROM jrottenberg/ffmpeg:4.2-ubuntu as ffmpeg
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.6.0"
+# Add files from ffmpeg
+COPY --from=ffmpeg /usr/local/ /usr/local/
+
+ENV VERSION="1.7.0"
 ENV XDG_CONFIG_HOME="/xdg"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
@@ -21,11 +25,25 @@ RUN \
 		nodejs \
 		git \
 		jq \
-		ffmpeg \
 		opus-tools \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean
+
+RUN \
+	# ffmpeg
+	apt-get update -qq && \
+	apt-get install -qq -y \
+		libva-drm2 \
+		libva2 \
+		i965-va-driver \
+		libgomp1 && \
+	apt-get purge --auto-remove -y && \
+	apt-get clean && \
+	chgrp users /usr/local/bin/ffmpeg && \
+	chgrp users /usr/local/bin/ffprobe && \
+	chmod g+x /usr/local/bin/ffmpeg && \
+	chmod g+x /usr/local/bin/ffprobe
 	
 RUN \
 	# Download script
