@@ -1,7 +1,5 @@
-ARG ffmpeg_tag=snapshot-ubuntu
-ARG sonarr_tag=preview
-FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
-FROM linuxserver/sonarr:${sonarr_tag}
+FROM jrottenberg/ffmpeg:4.2-ubuntu as ffmpeg
+FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
 # Add files from ffmpeg
@@ -34,6 +32,14 @@ RUN \
 
 RUN \
 	# ffmpeg
+	apt-get update -qq && \
+	apt-get install -qq -y \
+		libva-drm2 \
+		libva2 \
+		i965-va-driver \
+		libgomp1 && \
+	apt-get purge --auto-remove -y && \
+	apt-get clean && \
 	chgrp users /usr/local/bin/ffmpeg && \
 	chgrp users /usr/local/bin/ffprobe && \
 	chmod g+x /usr/local/bin/ffmpeg && \
