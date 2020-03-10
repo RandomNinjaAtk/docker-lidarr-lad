@@ -5,7 +5,7 @@ LABEL maintainer="RandomNinjaAtk"
 # Add files from ffmpeg
 COPY --from=ffmpeg /usr/local/ /usr/local/
 
-ENV VERSION="1.6.0"
+ENV VERSION="1.7.0"
 ENV XDG_CONFIG_HOME="/xdg"
 ENV downloaddir="/downloads/deezloaderremix"
 ENV LidarrImportLocation="/downloads/lidarr-import"
