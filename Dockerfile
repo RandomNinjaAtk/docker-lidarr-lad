@@ -78,6 +78,9 @@ RUN \
 	sed -i "s/\"logSearched\": false/\"logSearched\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/deezloaderremix/app/default.json" && \
+	sed -i "s/\"publisher\": true/\"publisher\": false/g" "/deezloaderremix/app/default.json" && \
+	sed -i "s/\"date\": true/\"date\": false/g" "/deezloaderremix/app/default.json" && \
+	sed -i "s/\"isrc\": true/\"isrc\": false/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"multitagSeparator\": \"; \"/\"multitagSeparator\": \"andFeat\"/g" "/deezloaderremix/app/default.json"
 
 WORKDIR /deezloaderremix
