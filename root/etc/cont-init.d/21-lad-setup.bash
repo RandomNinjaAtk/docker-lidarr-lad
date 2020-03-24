@@ -132,6 +132,8 @@ sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lida
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
+find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
+find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
 
 echo "Complete..."
 
