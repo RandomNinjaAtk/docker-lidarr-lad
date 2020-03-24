@@ -14,7 +14,7 @@ fi
 
 # create scripts directory if missing
 if [ ! -d "/config/scripts" ]; then
-	mkdir -p  "/config/scripts"
+	mkdir -p "/config/scripts"
 fi
 
 # Remove existing LAD start script
