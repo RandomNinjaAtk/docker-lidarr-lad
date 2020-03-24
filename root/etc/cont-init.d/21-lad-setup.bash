@@ -101,7 +101,7 @@ if [ -z "$LidarrImportLocation" ]; then
 	LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 fi
 if [ -z "$downloaddir" ]; then
-	downloaddir="/downloads/deezloaderremix"
+	downloaddir="/storage/downloads/lidarr/deezloaderremix"
 fi
 if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="true"
