@@ -19,12 +19,12 @@ if [ -d "/config/xdg" ]; then
 fi
 
 # create downloads directory
-if [ ! -d "/downloads/deezloaderremix" ]; then
-	mkdir "/downloads/deezloaderremix"
-	chmod 0777 "/downloads/deezloaderremix"
+if [ ! -d "/storage/downloads/lidarr/deezloaderremix" ]; then
+	mkdir -p "/storage/downloads/lidarr/deezloaderremix"
+	chmod 0777 "/storage/downloads/lidarr/deezloaderremix"
 fi
 
-ln -sf /downloads/deezloaderremix "/root/Deezloader Music" && \
+ln -sf /storage/downloads/lidarr/deezloaderremix "/root/Deezloader Music" && \
 
 # Start Deezloader
 echo "Starting Deezloader Remix..." && \
