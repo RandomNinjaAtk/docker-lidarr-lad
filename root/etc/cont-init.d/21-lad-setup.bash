@@ -98,7 +98,7 @@ if [ -z "$LidarrUrl" ]; then
 	LidarrUrl="http://127.0.0.1:8686"
 fi
 if [ -z "$LidarrImportLocation" ]; then
-	LidarrImportLocation="/downloads/lidarr-import"
+	LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 fi
 if [ -z "$downloaddir" ]; then
 	downloaddir="/downloads/deezloaderremix"
