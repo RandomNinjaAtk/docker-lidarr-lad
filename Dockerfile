@@ -7,8 +7,8 @@ COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="1.7.0"
 ENV XDG_CONFIG_HOME="/xdg"
-ENV downloaddir="/downloads/deezloaderremix"
-ENV LidarrImportLocation="/downloads/lidarr-import"
+ENV downloaddir="/storage/downloads/ldiarr/deezloaderremix"
+ENV LidarrImportLocation="/storage/downloads/ldiarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 ENV deezloaderurl="http://127.0.0.1:1730"
 
