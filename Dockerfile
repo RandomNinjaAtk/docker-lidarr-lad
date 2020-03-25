@@ -6,6 +6,7 @@ LABEL maintainer="RandomNinjaAtk"
 COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="1.7.0"
+ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
 ENV downloaddir="/storage/downloads/lidarr/deezloaderremix"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
@@ -35,6 +36,12 @@ RUN \
 	pip3 install --no-cache-dir -U \
 		beets \
 		pyacoustid
+		
+RUN \
+	# make directory
+	mkdir -p ${LAD_PATH} && \
+	# download repo
+	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH}
 
 RUN \
 	# ffmpeg
