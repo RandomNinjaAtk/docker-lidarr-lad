@@ -39,6 +39,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>)|
+| `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
 | `-e downloadmethod=album` | SET TO: album or track :: album method will fallback to track method if it runs into an issue |
 | `-e enablefallback=true` | true = enabled :: enables fallback to lower quality if required... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
@@ -51,7 +52,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e FolderPermissions=777` | Based on chmod linux permissions |
 | `-e FilePermissions=666` | Based on chmod linux permissions |
 | `-e DownLoadArtistArtwork=true` | true = enabled :: Uses Lidarr Artist artwork first with a fallback using LAD as the source |
-
+| `-e TagWithBeets=true` | true = enabled :: enable beet tagging to improve matching accuracy |
 
 # LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
@@ -78,6 +79,10 @@ Container images are configured using parameters passed at runtime (such as thos
   * Log file containing list of artists without links, open log for more details
 * <strong>download.log</strong>
   * Log file containing list of albums that were downloaded, automatically cleared every Saturday via cron
+* <strong>beets-config.yaml</strong>
+  * Beet config file for matching
+* <strong>beets-library.blb</strong>
+  * Beet library file, do not touch
  
 # Lidarr Configuration Recommendations
 
