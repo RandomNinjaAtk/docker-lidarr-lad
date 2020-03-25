@@ -6,9 +6,11 @@ LABEL maintainer="RandomNinjaAtk"
 COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="1.7.0"
+ENV UPDATE_LAD TRUE
+ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
-ENV downloaddir="/downloads/deezloaderremix"
-ENV LidarrImportLocation="/downloads/lidarr-import"
+ENV downloaddir="/storage/downloads/lidarr/deezloaderremix"
+ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 ENV deezloaderurl="http://127.0.0.1:1730"
 
@@ -26,9 +28,21 @@ RUN \
 		git \
 		jq \
 		opus-tools \
+		libchromaprint-tools \
+		python3-pip \
 		cron && \
 	apt-get purge --auto-remove -y && \
-	apt-get clean
+	apt-get clean && \
+	# Install beets
+	pip3 install --no-cache-dir -U \
+		beets \
+		pyacoustid
+		
+RUN \
+	# make directory
+	mkdir -p ${LAD_PATH} && \
+	# download repo
+	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH}
 
 RUN \
 	# ffmpeg
@@ -46,9 +60,7 @@ RUN \
 	chmod g+x /usr/local/bin/ffprobe
 	
 RUN \
-	# Download script
 	mkdir -p "/root/scripts" && \
-	curl -o "/root/scripts/lidarr-automated-downloader.bash" "https://raw.githubusercontent.com/RandomNinjaAtk/lidarr-automated-downloader/master/lidarr-automated-downloader.bash" && \
 	# setup cron
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
@@ -66,12 +78,10 @@ RUN \
 	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1000/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"localArtworkSize\": 1000/\"localArtworkSize\": 1400/g" "/deezloaderremix/app/default.json" && \
-	sed -i "s/\"saveArtwork\": false/\"saveArtwork\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"queueConcurrency\": 3/\"queueConcurrency\": 6/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"maxBitrate\": \"3\"/\"maxBitrate\": \"9\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"createCDFolder\": true/\"createCDFolder\": false/g" "/deezloaderremix/app/default.json" && \
-	sed -i "s/\"createSingleFolder\": false/\"createSingleFolder\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"syncedlyrics\": false/\"syncedlyrics\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"logErrors\": false/\"logErrors\": true/g" "/deezloaderremix/app/default.json" && \
@@ -100,4 +110,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 8686
-VOLUME /config /downloads /music
+VOLUME /config /storage

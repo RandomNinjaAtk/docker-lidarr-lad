@@ -38,8 +38,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
-| `-v /music` | Music files. |
-| `-v /downloads` | Path to your download folder for music. (<strong>DO NOT DELETE, this is a required path</strong>)|
+| `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>)|
 | `-e downloadmethod=album` | SET TO: album or track :: album method will fallback to track method if it runs into an issue |
 | `-e enablefallback=true` | true = enabled :: enables fallback to lower quality if required... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
@@ -58,6 +57,10 @@ Container images are configured using parameters passed at runtime (such as thos
 * Script is scheduled to run every 15 minutes via a cron job
 
 ## Directories:
+* <strong>/storage/downloads/lidarr/deezloaderremix</strong>
+  * DL client temporary DL directory
+* <strong>/storage/downloads/lidarr/lidarr-import</strong>
+  * lidarr directory used for automated imports
 * <strong>/config/scripts</strong>
 * <strong>/config/scripts/cache</strong>
   * Contains all cached album-lists to speed up results

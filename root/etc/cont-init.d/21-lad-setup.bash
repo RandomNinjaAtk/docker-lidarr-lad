@@ -2,19 +2,10 @@
 
 echo "Updating LAD scripts..."
 
-# Remove legacy LAD directory
-if [ -d /config/scripts/lidarr-automated-downloader ]; then
-	rm -rf "/config/scripts/lidarr-automated-downloader"
-fi
-
-# Remove legacy lock directory
-if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
-	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
-fi
 
 # create scripts directory if missing
 if [ ! -d "/config/scripts" ]; then
-	mkdir -p  "/config/scripts"
+	mkdir -p "/config/scripts"
 fi
 
 # Remove existing LAD start script
@@ -30,25 +21,20 @@ fi
 
 # Copy LAD into scripts directory
 if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
-	cp "/root/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
+	cp "${LAD_PATH}/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
 fi
+
+# Copy Beets config into scripts directory
+if [ ! -f "/config/scripts/beets-config.yaml" ]; then
+	cp "${LAD_PATH}/beets-config.yaml" "/config/scripts/beets-config.yaml"
+fi
+
 
 # Remove lock file incase, system was rebooted before script finished
 if [ -d "/scripts/00-lad-start.exclusivelock" ]; then
 	rmdir "/scripts/00-lad-start.exclusivelock"
 fi
 
-# Remove legacy lock file incase
-if [ -d "/config/scripts/00-lad-start.exclusivelock" ]; then
-	rmdir "/config/scripts/00-lad-start.exclusivelock"
-fi
-
-
-# Delete existing config file to update from settings
-if [ -f "/config/scripts/config" ]; then
-	rm "/config/scripts/config"
-	sleep 0.1
-fi
 
 # Delete existing config file to update from settings
 if [ -f "/scripts/lad-config" ]; then
@@ -98,10 +84,10 @@ if [ -z "$LidarrUrl" ]; then
 	LidarrUrl="http://127.0.0.1:8686"
 fi
 if [ -z "$LidarrImportLocation" ]; then
-	LidarrImportLocation="/downloads/lidarr-import"
+	LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 fi
 if [ -z "$downloaddir" ]; then
-	downloaddir="/downloads/deezloaderremix"
+	downloaddir="/storage/downloads/lidarr/deezloaderremix"
 fi
 if [ -z "$DownLoadArtistArtwork" ]; then
 	DownLoadArtistArtwork="true"
@@ -125,6 +111,10 @@ echo "LidarrUrl=\"$LidarrUrl\"" >> "/scripts/lad-config"
 echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/scripts/lad-config"
 echo "downloaddir=\"$downloaddir\"" >> "/scripts/lad-config"
 echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/scripts/lad-config"
+echo "BeetConfig=\"/config/scripts/beets-config.yaml\"" >> "/scripts/lad-config"
+echo "BeetLibrary=\"/config/scripts/beets-library.blb\"" >> "/scripts/lad-config"
+echo "BeetLog=\"/config/scripts/beets.log\"" >> "/scripts/lad-config"
+echo "TagWithBeets=\"true\"" >> "/scripts/lad-config"
 
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
@@ -132,6 +122,8 @@ sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lida
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
+find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
+find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
 
 echo "Complete..."
 
