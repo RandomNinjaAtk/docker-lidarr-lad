@@ -111,6 +111,9 @@ echo "LidarrUrl=\"$LidarrUrl\"" >> "/scripts/lad-config"
 echo "LidarrImportLocation=\"$LidarrImportLocation\"" >> "/scripts/lad-config"
 echo "downloaddir=\"$downloaddir\"" >> "/scripts/lad-config"
 echo "DownLoadArtistArtwork=\"$DownLoadArtistArtwork\"" >> "/scripts/lad-config"
+echo "BeetConfig=\"/config/scripts/beets-config.yaml\"" >> "/scripts/lad-config"
+echo "BeetLibrary=\"/config/scripts/beets-library.blb\"" >> "/scripts/lad-config"
+echo "BeetLog=\"/config/scripts/beets.log\"" >> "/scripts/lad-config"
 
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
