@@ -2,15 +2,6 @@
 
 echo "Updating LAD scripts..."
 
-# Remove legacy LAD directory
-if [ -d /config/scripts/lidarr-automated-downloader ]; then
-	rm -rf "/config/scripts/lidarr-automated-downloader"
-fi
-
-# Remove legacy lock directory
-if [ -d /config/scripts/00-lidarr-automated-downloader.exclusivelock ]; then
-	rmdir /config/scripts/00-lidarr-automated-downloader.exclusivelock
-fi
 
 # create scripts directory if missing
 if [ ! -d "/config/scripts" ]; then
@@ -30,25 +21,20 @@ fi
 
 # Copy LAD into scripts directory
 if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
-	cp "/root/scripts/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
+	cp "${LAD_PATH}/lidarr-automated-downloader.bash" "/config/scripts/lidarr-automated-downloader.bash"
 fi
+
+# Copy Beets config into scripts directory
+if [ ! -f "/config/scripts/beets-config.yaml" ]; then
+	cp "${LAD_PATH}/beets-config.yaml" "/config/scripts/beets-config.yaml"
+fi
+
 
 # Remove lock file incase, system was rebooted before script finished
 if [ -d "/scripts/00-lad-start.exclusivelock" ]; then
 	rmdir "/scripts/00-lad-start.exclusivelock"
 fi
 
-# Remove legacy lock file incase
-if [ -d "/config/scripts/00-lad-start.exclusivelock" ]; then
-	rmdir "/config/scripts/00-lad-start.exclusivelock"
-fi
-
-
-# Delete existing config file to update from settings
-if [ -f "/config/scripts/config" ]; then
-	rm "/config/scripts/config"
-	sleep 0.1
-fi
 
 # Delete existing config file to update from settings
 if [ -f "/scripts/lad-config" ]; then
