@@ -26,9 +26,15 @@ RUN \
 		git \
 		jq \
 		opus-tools \
+		libchromaprint-tools \
+		python3-pip \
 		cron && \
 	apt-get purge --auto-remove -y && \
-	apt-get clean
+	apt-get clean && \
+	# Install beets
+	pip3 install --no-cache-dir -U \
+		beets \
+		pyacoustid
 
 RUN \
 	# ffmpeg
