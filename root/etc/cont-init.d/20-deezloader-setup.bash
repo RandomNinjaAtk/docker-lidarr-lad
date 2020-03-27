@@ -15,6 +15,8 @@ chown -R abc:abc \
 chown -R abc:abc \
 	/deezloaderremix/
 
+chmod 0777 -R /deezloaderremix
+
 chown abc:abc \
 	/storage/downloads/lidarr/deezloaderremix
 
