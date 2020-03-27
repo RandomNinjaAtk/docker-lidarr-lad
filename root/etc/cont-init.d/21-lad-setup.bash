@@ -122,6 +122,10 @@ echo "TagWithBeets=\"$TagWithBeets\"" >> "/scripts/lad-config"
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
+# Modify script with chown
+sed -i 's/# docker-chown-01/chown abc:abc "$1"\/*/g' "/config/scripts/lidarr-automated-downloader.bash"
+sed -i 's/# docker-chown-02/chown -R abc:abc "$1"/g' "/config/scripts/lidarr-automated-downloader.bash"
+
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
