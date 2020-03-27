@@ -21,6 +21,6 @@ chown abc:abc \
 	/storage/downloads/lidarr/deezloaderremix
 
 chmod 0777 "/storage/downloads/lidarr/deezloaderremix"
-chmod 0666 -R "/root"
+chmod 0777 -R "/root"
 
 exit $?
