@@ -26,9 +26,4 @@ fi
 
 ln -sf /storage/downloads/lidarr/deezloaderremix "/root/Deezloader Music" && \
 
-# Start Deezloader
-echo "Starting Deezloader Remix..." && \
-nohup node /deezloaderremix/app/app.js &>/dev/null &
-echo "Startup complete..."
-
 exit 0
