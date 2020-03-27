@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# cd /deezloaderremix/app || exit
+
+UMASK_SET=${UMASK_SET:-022}
+umask "$UMASK_SET"
+
+
+exec \
+	s6-setuidgid abc node /deezloaderremix/app/app.js
