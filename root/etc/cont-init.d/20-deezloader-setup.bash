@@ -20,4 +20,6 @@ chmod 0777 -R /deezloaderremix
 chown abc:abc \
 	/storage/downloads/lidarr/deezloaderremix
 
+chmod 0777 "/storage/downloads/lidarr/deezloaderremix"
+
 exit $?
