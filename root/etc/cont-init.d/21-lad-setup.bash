@@ -2,7 +2,6 @@
 
 echo "Updating LAD scripts..."
 
-
 # create scripts directory if missing
 if [ ! -d "/config/scripts" ]; then
 	mkdir -p "/config/scripts"
@@ -131,10 +130,8 @@ find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
 find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
 find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
+chown -R abc:abc "/config/scripts"
 
 echo "Complete..."
-
-# start cron
-service cron start
 
 exit 0
