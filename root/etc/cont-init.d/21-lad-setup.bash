@@ -131,6 +131,7 @@ find /config/scripts -type d -exec chmod 0777 {} \;
 find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
 find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
 chown -R abc:abc "/config/scripts"
+chown -R abc:abc "/scripts"
 
 echo "Complete..."
 
