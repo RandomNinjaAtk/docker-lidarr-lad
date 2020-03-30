@@ -94,6 +94,9 @@ fi
 if [ -z "$TagWithBeets" ]; then
 	TagWithBeets="true"
 fi
+if [ -z "$RequireBeetsMatch" ]; then
+	RequireBeetsMatch="false"
+fi
 
 touch "/scripts/lad-config"
 echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/scripts/lad-config"
@@ -117,6 +120,7 @@ echo "BeetConfig=\"/config/scripts/beets-config.yaml\"" >> "/scripts/lad-config"
 echo "BeetLibrary=\"/config/scripts/beets-library.blb\"" >> "/scripts/lad-config"
 echo "BeetLog=\"/config/scripts/beets.log\"" >> "/scripts/lad-config"
 echo "TagWithBeets=\"$TagWithBeets\"" >> "/scripts/lad-config"
+echo "RequireBeetsMatch=\"$RequireBeetsMatch\"" >> "/scripts/lad-config"
 
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
