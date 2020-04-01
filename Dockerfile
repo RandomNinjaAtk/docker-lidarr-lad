@@ -1,9 +1,5 @@
-FROM jrottenberg/ffmpeg:snapshot-ubuntu as ffmpeg
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
-
-# Add files from ffmpeg
-COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="1.7.0"
 ENV UPDATE_LAD TRUE
@@ -15,64 +11,49 @@ ENV LidarrUrl="http://127.0.0.1:8686"
 ENV deezloaderurl="http://127.0.0.1:1730"
 
 RUN \
-	# install dependancies
+	echo "************ install dependencies ************" && \
 	curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 	apt-get update -qq && \
 	apt-get install -qq -y \
-		mp3val \
-		flac \
 		wget \
 		nano \
 		unzip \
 		nodejs \
 		git \
 		jq \
+		mp3val \
+		flac \
 		opus-tools \
-		libchromaprint-tools \
+		beets \
+		python3 \
 		python3-pip \
+		libchromaprint-tools \
+		ffmpeg \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean && \
-	# Install beets
+	echo "************ install beets plugin dependencies ************" && \
 	pip3 install --no-cache-dir -U \
-		beets \
-		pyacoustid
-		
-RUN \
-	# make directory
+		requests \
+		Pillow \
+		pylast \
+		pyacoustid && \
+	echo "************ setup lad ************" && \
+	echo "************ make directory ************" && \
 	mkdir -p ${LAD_PATH} && \
-	# download repo
-	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH}
-
-RUN \
-	# ffmpeg
-	apt-get update -qq && \
-	apt-get install -qq -y \
-		libva-drm2 \
-		libva2 \
-		i965-va-driver \
-		libgomp1 && \
-	apt-get purge --auto-remove -y && \
-	apt-get clean && \
-	chgrp users /usr/local/bin/ffmpeg && \
-	chgrp users /usr/local/bin/ffprobe && \
-	chmod g+x /usr/local/bin/ffmpeg && \
-	chmod g+x /usr/local/bin/ffprobe
-	
-RUN \
+	echo "************ download repo ************" && \
+	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
 	mkdir -p "/root/scripts" && \
-	# setup cron
+	echo "************ setup cron ************" && \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
 	echo "0 0 1 * *   root   rm \"/config/scripts/download.log\""  >> "/etc/crontab" && \
 	echo "0 0 1 * *   root   rm \"/config/scripts/notfound.log\""  >> "/etc/crontab"
-
-RUN \
-	# Download Deezloader
+	echo "************ download deezloader ************" && \
 	wget https://notabug.org/RemixDevs/DeezloaderRemix/archive/development.zip && \
 	unzip development.zip && \
 	rm development.zip && \
-	# Customize Deezloader Config
+	echo "************ customize deezloader ************" && \
 	sed -i "s/\"trackNameTemplate\": \"%artist% - %title%\"/\"trackNameTemplate\": \"%disc%%number% - %title% %explicit%\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"albumTrackNameTemplate\": \"%number% - %title%\"/\"albumTrackNameTemplate\": \"%disc%%number% - %title% %explicit%\"/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/deezloaderremix/app/default.json" && \
@@ -90,8 +71,7 @@ RUN \
 	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"publisher\": true/\"publisher\": false/g" "/deezloaderremix/app/default.json" && \
 	sed -i "s/\"date\": true/\"date\": false/g" "/deezloaderremix/app/default.json" && \
-	sed -i "s/\"isrc\": true/\"isrc\": false/g" "/deezloaderremix/app/default.json" && \
-	sed -i "s/\"multitagSeparator\": \"; \"/\"multitagSeparator\": \"andFeat\"/g" "/deezloaderremix/app/default.json"
+	sed -i "s/\"isrc\": true/\"isrc\": false/g" "/deezloaderremix/app/default.json"
 
 WORKDIR /deezloaderremix
 
