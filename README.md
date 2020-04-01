@@ -46,7 +46,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e albumtimeoutpercentage=8` | Set the number between 1 and 100 :: This number is used to caculate album download timeout length by multiplying Album Length by ##% |
 | `-e tracktimeoutpercentage=25` | Set the number between 1 and 100 :: This number is used to caculate  track download timeout length by multiplying Track Length by ##% |
 | `-e amount=1000000000` | Maximum: 1000000000 :: Number of missing/cutoff albums to look for... |
-| `-e quality=MP3` | SET TO: FLAC or MP3 or OPUS or FDK-AAC or AAC or ALAC |
+| `-e quality=MP3` | SET TO: FLAC or MP3 or OPUS or AAC or ALAC |
 | `-e ConversionBitrate=320` | FLAC -> OPUS/AAC will be converted using this bitrate |
 | `-e ReplaygainTagging=false` | TRUE = ENABLED :: adds replaygain tags for compatible players (FLAC ONLY) |
 | `-e FolderPermissions=777` | Based on chmod linux permissions |
