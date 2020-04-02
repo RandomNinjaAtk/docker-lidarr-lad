@@ -3,6 +3,7 @@ LABEL maintainer="RandomNinjaAtk"
 
 ENV VERSION="1.7.0"
 ENV UPDATE_LAD TRUE
+ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
 ENV downloaddir="/storage/downloads/lidarr/deezloaderremix"
