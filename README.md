@@ -8,7 +8,7 @@
 
 This containers base image is provided by: [linuxserver/lidarr:preview](https://github.com/linuxserver/docker-lidarr)
 
-[![lidarr](https://github.com/lidarr/Lidarr/blob/develop/Logo/400.png)](https://github.com/lidarr/Lidarr)
+[![lidarr](https://raw.githubusercontent.com/RandomNinjaAtk/unraid-templates/master/randomninjaatk/img/lidarr.png)](https://github.com/lidarr/Lidarr)
 
 
 ## Supported Architectures
