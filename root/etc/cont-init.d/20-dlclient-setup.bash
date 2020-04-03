@@ -6,7 +6,9 @@ if [ ! -d "/storage/downloads/lidarr/deezloaderremix" ]; then
 	chmod 0777 "/storage/downloads/lidarr/deezloaderremix"
 fi
 
-ln -sf /storage/downloads/lidarr/deezloaderremix /root/Deezloader\ Music && \
+if [[ ! -L "/root/Deezloader Music" && ! -d "/root/Deezloader Music" ]]; then
+        ln -sf "/storage/downloads/lidarr/deezloaderremix" "/root/Deezloader Music"
+fi
 
 # permissions
 chown -R abc:abc \
