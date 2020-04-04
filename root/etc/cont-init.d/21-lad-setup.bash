@@ -14,7 +14,7 @@ if [ -f "/config/scripts/artwork.bash" ]; then
 fi
 
 # Copy artwork into scripts directory
-if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+if [ ! -f "/config/scripts/artwork.bash" ]; then
 	cp "${LAD_PATH}/artwork.bash" "/config/scripts/artwork.bash"
 fi
 
