@@ -53,6 +53,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e FilePermissions=666` | Based on chmod linux permissions |
 | `-e DownLoadArtistArtwork=true` | true = enabled :: Uses Lidarr Artist artwork first with a fallback using LAD as the source |
 | `-e TagWithBeets=true` | true = enabled :: enable beet tagging to improve matching accuracy |
+| `-e RequireQuality=false` | true = enabled :: skips importing files that do not match quality settings |
 
 # LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
@@ -83,6 +84,8 @@ Container images are configured using parameters passed at runtime (such as thos
   * Beet config file for matching
 * <strong>beets-library.blb</strong>
   * Beet library file, do not touch
+* <strong>artwork.bash</strong>
+  * Custom embedded ablum artwork extraction script to be added to Lidarr as a custom script, see Lidarr Recommendations below
  
 # Lidarr Configuration Recommendations
 
@@ -105,3 +108,24 @@ Container images are configured using parameters passed at runtime (such as thos
  
 #### Permissions
 * Enable Set Permissions
+
+## Connect Settings
+
+### Add Custom Script
+* Settings -> Connect -> + Add -> custom Script
+
+| Parameter | Value |
+| --- | --- |
+| Name | Album Artwork Extractor |
+| On Grab | No |
+| On Release Import | Yes |
+| On Upgrade | Yes |
+| On Download Failure | No |
+| On Import Failure | No |
+| On Rename | Yes |
+| On Track Retag | Yes |
+| On Health Issue | No |
+| Tags | leave blank |
+| Path | `/config/scripts/artwork.bash` |
+
+This script will extract the embedded file artwork and store it in the folder local ablum folder
