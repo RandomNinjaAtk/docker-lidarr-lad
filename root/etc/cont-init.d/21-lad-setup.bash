@@ -7,9 +7,15 @@ if [ ! -d "/config/scripts" ]; then
 	mkdir -p "/config/scripts"
 fi
 
-# Remove existing LAD start script
-if [ -f "/config/scripts/lad-start.bash" ]; then
-	rm "/config/scripts/lad-start.bash"
+# Remove existing artwork script
+if [ -f "/config/scripts/artwork.bash" ]; then
+	rm "/config/scripts/artwork.bash"
+	sleep 0.1
+fi
+
+# Copy artwork into scripts directory
+if [ ! -f "/config/scripts/lidarr-automated-downloader.bash" ]; then
+	cp "${LAD_PATH}/artwork.bash" "/config/scripts/artwork.bash"
 fi
 
 # Remove existing LAD script
@@ -136,6 +142,7 @@ sed -i 's/# docker-chown-02/chown -R abc:abc "$1"/g' "/config/scripts/lidarr-aut
 # Set permissions
 find /config/scripts -type f -exec chmod 0666 {} \;
 find /config/scripts -type d -exec chmod 0777 {} \;
+find /config/scripts -type f -iname "*.bash" -exec chmod 0777 {} \;
 find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
 find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
 chown -R abc:abc "/config/scripts"
