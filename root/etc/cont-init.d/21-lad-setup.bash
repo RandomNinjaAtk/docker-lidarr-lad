@@ -140,14 +140,12 @@ sed -i 's/# docker-chown-01/chown abc:abc "$1"\/*/g' "/config/scripts/lidarr-aut
 sed -i 's/# docker-chown-02/chown -R abc:abc "$1"/g' "/config/scripts/lidarr-automated-downloader.bash"
 
 # Set permissions
-find /config/scripts -type f -exec chmod 0666 {} \;
-find /config/scripts -type d -exec chmod 0777 {} \;
-find /config/scripts -type f -iname "*.bash" -exec chmod 0777 {} \;
 find /storage/downloads/lidarr -type f -exec chmod 0666 {} \;
 find /storage/downloads/lidarr -type d -exec chmod 0777 {} \;
 chown -R abc:abc "/config/scripts"
 chown -R abc:abc "/scripts"
 chmod 0777 -R "/scripts"
+chmod 0777 -R "/config/scripts"
 
 echo "Complete..."
 
