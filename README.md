@@ -128,4 +128,4 @@ Container images are configured using parameters passed at runtime (such as thos
 | Tags | leave blank |
 | Path | `/config/scripts/artwork.bash` |
 
-This script will extract the embedded file artwork and store it in the folder local ablum folder
+This script will extract the embedded file artwork and store it in the local ablum folder
