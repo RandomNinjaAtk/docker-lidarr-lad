@@ -6,7 +6,7 @@ ENV UPDATE_LAD TRUE
 ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
-ENV downloaddir="/storage/downloads/lidarr/deezloaderremix"
+ENV downloaddir="/storage/downloads/lidarr/dlclient"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 
