@@ -55,7 +55,7 @@ RUN \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
 	echo "0 0 1 * *   root   rm \"/config/scripts/download.log\""  >> "/etc/crontab" && \
-	echo "0 0 1 * *   root   rm \"/config/scripts/notfound.log\""  >> "/etc/crontab" && \
+	echo "0 0 1 * *   root   rm \"/config/scripts/notfound.log\""  >> "/etc/crontab"
 	
 WORKDIR /
 
