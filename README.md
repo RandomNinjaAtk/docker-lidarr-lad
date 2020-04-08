@@ -40,6 +40,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>)|
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
+| `-e ENABLE_LAD=TRUE` | TRUE = Enabled :: Runs LAD script automatically every 15 minutes via cronjob |
 | `-e ARL_TOKEN=""` | User token for dl client, for instructions to obtain token: https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken#how-do-i-get-my-usertoken |
 | `-e CONCURRENCY=4` | Number of concurrent tracks to download via the client. Increasing can speed things up but is more resource intensive, lower is safer... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
