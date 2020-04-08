@@ -1,7 +1,7 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.7.1"
+ENV VERSION="1.7.2"
 ENV UPDATE_LAD TRUE
 ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
