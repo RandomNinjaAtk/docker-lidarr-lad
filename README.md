@@ -40,11 +40,9 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>)|
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
-| `-e downloadmethod=album` | SET TO: album or track :: album method will fallback to track method if it runs into an issue |
-| `-e enablefallback=true` | true = enabled :: enables fallback to lower quality if required... |
+| `-e ARL_TOKEN=""` | User token for dl client, for instructions to obtain token: https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken#how-do-i-get-my-usertoken |
+| `-e CONCURRENCY=4` | Number of concurrent tracks to download via the client. Increasing can speed things up but is more resource intensive, lower is safer... |
 | `-e VerifyTrackCount=true` | true = enabled :: This will verify album track count vs dl track count, if tracks are found missing, it will skip import... |
-| `-e albumtimeoutpercentage=8` | Set the number between 1 and 100 :: This number is used to caculate album download timeout length by multiplying Album Length by ##% |
-| `-e tracktimeoutpercentage=25` | Set the number between 1 and 100 :: This number is used to caculate  track download timeout length by multiplying Track Length by ##% |
 | `-e amount=1000000000` | Maximum: 1000000000 :: Number of missing/cutoff albums to look for... |
 | `-e quality=MP3` | SET TO: FLAC or MP3 or OPUS or AAC or ALAC |
 | `-e ConversionBitrate=320` | FLAC -> OPUS/AAC will be converted using this bitrate |
