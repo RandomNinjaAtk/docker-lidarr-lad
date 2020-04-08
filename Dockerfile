@@ -13,13 +13,11 @@ ENV LidarrUrl="http://127.0.0.1:8686"
 
 RUN \
 	echo "************ install dependencies ************" && \
-	curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
 	apt-get update -qq && \
 	apt-get install -qq -y \
 		wget \
 		nano \
 		unzip \
-		nodejs \
 		git \
 		jq \
 		mp3val \
