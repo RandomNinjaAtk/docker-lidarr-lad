@@ -41,7 +41,7 @@ RUN \
 	echo "************ make directory ************" && \
 	mkdir -p ${LAD_PATH} && \
 	echo "************ download repo ************" && \
-	git clone --single-branch --branch d-fi https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
+	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
 	echo "************ download dl client ************" && \
 	mkdir -p "/root/scripts" && \
 	cd "/root/scripts" && \
