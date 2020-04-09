@@ -28,6 +28,8 @@ RUN \
 		python3-pip \
 		libchromaprint-tools \
 		ffmpeg \
+		imagemagick \
+		python3-pythonmagick \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean && \
