@@ -1,7 +1,7 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="1.7.3"
+ENV VERSION="1.7.4"
 ENV UPDATE_LAD TRUE
 ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
@@ -47,7 +47,7 @@ RUN \
 	echo "************ download dl client ************" && \
 	mkdir -p "/root/scripts" && \
 	cd "/root/scripts" && \
-	wget https://github.com/d-fi/releases/releases/download/1.3.2/d-fi-linux.zip  && \
+	wget https://github.com/d-fi/releases/releases/download/1.3.3/d-fi-linux.zip  && \
 	unzip d-fi-linux.zip && \
 	rm d-fi-linux.zip && \
 	chmod 0777 "/root/scripts/d-fi" && \
