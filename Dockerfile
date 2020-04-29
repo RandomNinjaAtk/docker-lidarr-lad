@@ -47,10 +47,10 @@ RUN \
 	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
 	echo "************ download dl client ************" && \
 	echo "************ make directory ************" && \
-	mkdir -p "/root/scripts/deemix" && \
+	mkdir -p ${PathToDLClient} && \
 	mkdir -p "/xdg/deemix" && \
 	echo "************ download dl client repo ************" && \
-	git clone https://notabug.org/RemixDev/deemix.git "/root/scripts/deemix" && \
+	git clone https://notabug.org/RemixDev/deemix.git ${PathToDLClient} && \
 	echo "************ install pip dependencies ************" && \
 	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
 	echo "************ setup cron ************" && \
