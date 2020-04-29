@@ -54,6 +54,10 @@ RUN \
 	git clone https://notabug.org/RemixDev/deemix.git ${PathToDLClient} && \
 	echo "************ install pip dependencies ************" && \
 	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
+	echo "************ customize deezloader ************" && \
+	sed -i "s/\"downloadLocation\": \"\"/\"downloadLocation\": \"${downloaddir}\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
+	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
