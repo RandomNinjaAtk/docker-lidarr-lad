@@ -91,11 +91,8 @@ fi
 if [ -z "$RequireQuality" ]; then
 	RequireQuality="false"
 fi
-if [ -z "$CONCURRENCY" ]; then
-	concurrency="4"
-fi
-if [ -z "$ARL_TOKEN" ]; then
-	echo "ARLToken=\"\"" >> "/scripts/lad-config"
+if [ -z "$PYTHON" ]; then
+	python="python3"
 fi
 
 touch "/scripts/lad-config"
@@ -117,8 +114,12 @@ echo "BeetLibrary=\"/config/scripts/beets-library.blb\"" >> "/scripts/lad-config
 echo "TagWithBeets=\"$TagWithBeets\"" >> "/scripts/lad-config"
 echo "RequireBeetsMatch=\"$RequireBeetsMatch\"" >> "/scripts/lad-config"
 echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
-echo "concurrency=\"$CONCURRENCY\"" >> "/scripts/lad-config"
-echo "ARLToken=\"$ARL_TOKEN\"" >> "/scripts/lad-config"
+if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
+	rm "$XDG_CONFIG_HOME/deemix/.arl"
+fi
+cd "$PathToDLClient"
+$python -m deemix --help
+echo "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
 
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
