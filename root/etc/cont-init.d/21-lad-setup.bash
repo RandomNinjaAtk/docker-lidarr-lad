@@ -117,7 +117,7 @@ if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 fi
 cd "$PathToDLClient"
 $PYTHON -m deemix --help
-echo "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
+echo -n "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
 
 # Modify script with config location
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
