@@ -49,7 +49,7 @@ RUN \
 	echo "************ download dl client ************" && \
 	echo "************ make directory ************" && \
 	mkdir -p ${PathToDLClient} && \
-	mkdir -p "/xdg/deemix" && \
+	mkdir -p "${XDG_CONFIG_HOME}/deemix" && \
 	echo "************ download dl client repo ************" && \
 	git clone https://notabug.org/RemixDev/deemix.git ${PathToDLClient} && \
 	echo "************ install pip dependencies ************" && \
