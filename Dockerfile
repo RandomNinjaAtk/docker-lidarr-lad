@@ -8,7 +8,7 @@ ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
 ENV PYTHON="python3"
 ENV downloaddir="/storage/downloads/lidarr/dlclient"
-ENV PathToDLClient="/root/scripts"
+ENV PathToDLClient="/root/scripts/deemix"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 
