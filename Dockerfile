@@ -45,12 +45,12 @@ RUN \
 	echo "************ download repo ************" && \
 	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
 	echo "************ download dl client ************" && \
-	mkdir -p "/root/scripts" && \
-	cd "/root/scripts" && \
-	wget https://github.com/d-fi/releases/releases/download/1.3.3/d-fi-linux.zip  && \
-	unzip d-fi-linux.zip && \
-	rm d-fi-linux.zip && \
-	chmod 0777 "/root/scripts/d-fi" && \
+	echo "************ make directory ************" && \
+	mkdir -p "/root/scripts/deemix" && \
+	echo "************ download dl client repo ************" && \
+	git clone https://notabug.org/RemixDev/deemix.git "/root/scripts/deemix" && \
+	echo "************ install pip dependencies ************" && \
+	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
 	echo "************ setup cron ************" && \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \
