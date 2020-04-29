@@ -6,6 +6,7 @@ ENV UPDATE_LAD TRUE
 ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
+ENV PYTHON="python3"
 ENV downloaddir="/storage/downloads/lidarr/dlclient"
 ENV PathToDLClient="/root/scripts"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
