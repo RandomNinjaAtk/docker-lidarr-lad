@@ -47,6 +47,7 @@ RUN \
 	echo "************ download dl client ************" && \
 	echo "************ make directory ************" && \
 	mkdir -p "/root/scripts/deemix" && \
+	mkdir -p "/xdg/deemix" && \
 	echo "************ download dl client repo ************" && \
 	git clone https://notabug.org/RemixDev/deemix.git "/root/scripts/deemix" && \
 	echo "************ install pip dependencies ************" && \
