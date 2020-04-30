@@ -62,8 +62,8 @@ RUN \
 	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1400/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"logErrors\": false/\"logErrors\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"label\": true/\"label\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"date\": true/\"date\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
