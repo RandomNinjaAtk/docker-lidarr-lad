@@ -56,6 +56,17 @@ RUN \
 	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
 	echo "************ customize deezloader ************" && \
 	sed -i 's/"downloadLocation": "",/"downloadLocation": "\/storage\/downloads\/lidarr\/dlclient",/g' "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"tracknameTemplate\": \"%artist% - %title%\"/\"tracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"albumTracknameTemplate\": \"%tracknumber% - %title%\"/\"albumTracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1400/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"logErrors\": false/\"logErrors\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"label\": true/\"label\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"date\": true/\"date\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
