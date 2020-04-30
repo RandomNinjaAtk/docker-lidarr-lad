@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 if mkdir /scripts/00-lad-start.exclusivelock; then
   
