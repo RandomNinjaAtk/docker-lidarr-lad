@@ -120,7 +120,8 @@ echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
 echo "concurrency=\"$CONCURRENCY\"" >> "/scripts/lad-config"
 echo "ARLToken=\"$ARL_TOKEN\"" >> "/scripts/lad-config"
 
-# Modify script with config location
+# Modify script with config location and bash environment
+sed -i "s/#!\/bin/\bash/#!\/usr\/bin\/with-contenv bash/g" "/config/scripts/lidarr-automated-downloader.bash"
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
 # Modify script with chown
