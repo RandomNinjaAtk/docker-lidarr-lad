@@ -94,7 +94,7 @@ fi
 if [ -z "$CONCURRENCY" ]; then
 	CONCURRENCY=4
 fi
-sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/root/scripts/deemix/deemix/app/default.json" && \
+sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
 
 touch "/scripts/lad-config"
