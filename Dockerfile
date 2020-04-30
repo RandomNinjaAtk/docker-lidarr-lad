@@ -3,11 +3,13 @@ LABEL maintainer="RandomNinjaAtk"
 
 ENV VERSION="1.7.4"
 ENV UPDATE_LAD TRUE
+ENV UPDATE_DLCLIENT TRUE
 ENV ENABLE_LAD TRUE
 ENV LAD_PATH /usr/local/lad
 ENV XDG_CONFIG_HOME="/xdg"
+ENV PYTHON="python3"
 ENV downloaddir="/storage/downloads/lidarr/dlclient"
-ENV PathToDLClient="/root/scripts"
+ENV PathToDLClient="/root/scripts/deemix"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 
@@ -45,12 +47,28 @@ RUN \
 	echo "************ download repo ************" && \
 	git clone https://github.com/RandomNinjaAtk/lidarr-automated-downloader.git ${LAD_PATH} && \
 	echo "************ download dl client ************" && \
-	mkdir -p "/root/scripts" && \
-	cd "/root/scripts" && \
-	wget https://github.com/d-fi/releases/releases/download/1.3.3/d-fi-linux.zip  && \
-	unzip d-fi-linux.zip && \
-	rm d-fi-linux.zip && \
-	chmod 0777 "/root/scripts/d-fi" && \
+	echo "************ make directory ************" && \
+	mkdir -p ${PathToDLClient} && \
+	mkdir -p "${XDG_CONFIG_HOME}/deemix" && \
+	echo "************ download dl client repo ************" && \
+	git clone https://notabug.org/RemixDev/deemix.git ${PathToDLClient} && \
+	echo "************ install pip dependencies ************" && \
+	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
+	echo "************ customize deezloader ************" && \
+	sed -i 's/"downloadLocation": "",/"downloadLocation": "\/storage\/downloads\/lidarr\/dlclient",/g' "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"tracknameTemplate\": \"%artist% - %title%\"/\"tracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"albumTracknameTemplate\": \"%tracknumber% - %title%\"/\"albumTracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1400/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"label\": true/\"label\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"date\": true/\"date\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
+	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab" && \

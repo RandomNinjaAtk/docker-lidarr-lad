@@ -92,11 +92,10 @@ if [ -z "$RequireQuality" ]; then
 	RequireQuality="false"
 fi
 if [ -z "$CONCURRENCY" ]; then
-	concurrency="4"
+	CONCURRENCY=4
 fi
-if [ -z "$ARL_TOKEN" ]; then
-	echo "ARLToken=\"\"" >> "/scripts/lad-config"
-fi
+sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
+
 
 touch "/scripts/lad-config"
 echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/scripts/lad-config"
@@ -117,8 +116,14 @@ echo "BeetLibrary=\"/config/scripts/beets-library.blb\"" >> "/scripts/lad-config
 echo "TagWithBeets=\"$TagWithBeets\"" >> "/scripts/lad-config"
 echo "RequireBeetsMatch=\"$RequireBeetsMatch\"" >> "/scripts/lad-config"
 echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
-echo "concurrency=\"$CONCURRENCY\"" >> "/scripts/lad-config"
-echo "ARLToken=\"$ARL_TOKEN\"" >> "/scripts/lad-config"
+echo "python=\"$PYTHON\"" >> "/scripts/lad-config"
+if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
+	rm "$XDG_CONFIG_HOME/deemix/.arl"
+fi
+cd "$PathToDLClient"
+$PYTHON -m deemix --help
+echo -n "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
+
 
 # Modify script with config location and bash environment
 sed -i "s/#!\/bin\/bash/#!\/usr\/bin\/with-contenv bash/g" "/config/scripts/lidarr-automated-downloader.bash"
