@@ -91,6 +91,11 @@ fi
 if [ -z "$RequireQuality" ]; then
 	RequireQuality="false"
 fi
+if [ -z "$CONCURRENCY" ]; then
+	concurrency="4"
+fi
+sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $concurrency,/g" "/root/scripts/deemix/deemix/app/default.json" && \
+
 
 touch "/scripts/lad-config"
 echo 'LidarrApiKey="$(grep "<ApiKey>" /config/config.xml | sed "s/\  <ApiKey>//;s/<\/ApiKey>//")"' >> "/scripts/lad-config"
