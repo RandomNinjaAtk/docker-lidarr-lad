@@ -128,7 +128,7 @@ echo -n "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
 # Modify script with config location and bash environment
 sed -i "s/#!\/bin\/bash/#!\/usr\/bin\/with-contenv bash/g" "/config/scripts/lidarr-automated-downloader.bash"
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
-sed -i "s/# export1/export XDG_CONFIG_HOME=\"/xdg\"/g" "/config/scripts/lidarr-automated-downloader.bash"
+sed -i "s/# export1/export XDG_CONFIG_HOME=\"\/xdg\"/g" "/config/scripts/lidarr-automated-downloader.bash"
 sed -i "s/# export2/export LC_ALL=C.UTF-8/g" "/config/scripts/lidarr-automated-downloader.bash"
 sed -i "s/# export3/export LANG=C.UTF-8/g" "/config/scripts/lidarr-automated-downloader.bash"
 
