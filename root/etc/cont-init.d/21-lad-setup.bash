@@ -92,9 +92,9 @@ if [ -z "$RequireQuality" ]; then
 	RequireQuality="false"
 fi
 if [ -z "$CONCURRENCY" ]; then
-	concurrency="4"
+	CONCURRENCY=4
 fi
-sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $concurrency,/g" "/root/scripts/deemix/deemix/app/default.json" && \
+sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/root/scripts/deemix/deemix/app/default.json" && \
 
 
 touch "/scripts/lad-config"
