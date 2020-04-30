@@ -124,7 +124,9 @@ cd "$PathToDLClient"
 $PYTHON -m deemix --help
 echo -n "$ARL_TOKEN" > "$XDG_CONFIG_HOME/deemix/.arl"
 
-# Modify script with config location
+
+# Modify script with config location and bash environment
+sed -i "s/#!\/bin\/bash/#!\/usr\/bin\/with-contenv bash/g" "/config/scripts/lidarr-automated-downloader.bash"
 sed -i "s/source .\/config/source \/scripts\/lad-config/g" "/config/scripts/lidarr-automated-downloader.bash"
 
 # Modify script with chown
