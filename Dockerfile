@@ -25,6 +25,7 @@ RUN \
 		mp3val \
 		flac \
 		opus-tools \
+		eyed3 \
 		beets \
 		python3 \
 		python3-pip \
