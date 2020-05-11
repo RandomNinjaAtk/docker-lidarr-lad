@@ -39,6 +39,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
+| `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
 | `-e UPDATE_DLCLIENT=FALSE` | TRUE = Enabled :: updates DL Client application from repo on startup | 
 | `-e ENABLE_LAD=TRUE` | TRUE = Enabled :: Runs LAD script automatically every 15 minutes via cronjob |
