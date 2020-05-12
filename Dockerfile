@@ -63,11 +63,15 @@ RUN \
 	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1400/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"trackTotal\": false/\"trackTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"discTotal\": false/\"discTotal\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"label\": true/\"label\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"date\": true/\"date\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"explicit\": false/\"explicit\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"length\": true/\"length\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"lyrics\": false/\"lyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"copyright\": false/\"copyright\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"composer\": false/\"composer\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"involvedPeople\": false/\"involvedPeople\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \	
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
