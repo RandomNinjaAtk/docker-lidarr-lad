@@ -60,7 +60,7 @@ Container images are configured using parameters passed at runtime (such as thos
 * Script is scheduled to run every 15 minutes via a cron job
 
 ## Directories:
-* <strong>/storage/downloads/lidarr/deezloaderremix</strong>
+* <strong>/storage/downloads/lidarr/dlclient</strong>
   * DL client temporary DL directory
 * <strong>/storage/downloads/lidarr/lidarr-import</strong>
   * lidarr directory used for automated imports
