@@ -117,6 +117,7 @@ echo "TagWithBeets=\"$TagWithBeets\"" >> "/scripts/lad-config"
 echo "RequireBeetsMatch=\"$RequireBeetsMatch\"" >> "/scripts/lad-config"
 echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
 echo "python=\"$PYTHON\"" >> "/scripts/lad-config"
+echo "DownloadMode=\"$DLMODE\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
 fi
