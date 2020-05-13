@@ -40,7 +40,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
 | `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
-| `-e DLMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted and Cutoff Album lists :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing |
+| `-e DLMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted and Cutoff Album lists :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... |
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
 | `-e UPDATE_DLCLIENT=FALSE` | TRUE = Enabled :: updates DL Client application from repo on startup | 
 | `-e ENABLE_LAD=TRUE` | TRUE = Enabled :: Runs LAD script automatically every 15 minutes via cronjob |
