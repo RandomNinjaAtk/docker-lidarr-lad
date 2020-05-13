@@ -60,7 +60,7 @@ RUN \
 	sed -i "s/\"tracknameTemplate\": \"%artist% - %title%\"/\"tracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"albumTracknameTemplate\": \"%tracknumber% - %title%\"/\"albumTracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1400/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1800/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
@@ -71,7 +71,8 @@ RUN \
 	sed -i "s/\"lyrics\": false/\"lyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"copyright\": false/\"copyright\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"composer\": false/\"composer\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"involvedPeople\": false/\"involvedPeople\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \	
+	sed -i "s/\"involvedPeople\": false/\"involvedPeople\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"multitagSeparator\": \"default\"/\"multitagSeparator\": \"andFeat\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
