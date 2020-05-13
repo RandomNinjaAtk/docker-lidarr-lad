@@ -12,6 +12,7 @@ ENV downloaddir="/storage/downloads/lidarr/dlclient"
 ENV PathToDLClient="/root/scripts/deemix"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
+ENV DownloadMode="wanted"
 
 RUN \
 	echo "************ install dependencies ************" && \
