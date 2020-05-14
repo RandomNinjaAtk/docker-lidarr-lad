@@ -94,6 +94,9 @@ fi
 if [ -z "$CONCURRENCY" ]; then
 	CONCURRENCY=4
 fi
+if [ -z "$TRACKUPGRADE" ]; then
+	TRACKUPGRADE="false"
+fi
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
 
@@ -118,6 +121,7 @@ echo "RequireBeetsMatch=\"$RequireBeetsMatch\"" >> "/scripts/lad-config"
 echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
 echo "python=\"$PYTHON\"" >> "/scripts/lad-config"
 echo "DownloadMode=\"$DLMODE\"" >> "/scripts/lad-config"
+echo "TrackUpgrade=\"$TRACKUPGRADE\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
 fi
