@@ -40,7 +40,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
 | `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
-| `-e DLMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted and Cutoff Album lists :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
+| `-e DLMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted/Cutoff Album lists (TrackUpgrade must be enabled for Cutoff) :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
+| `-e TRACKUPGRADE=false` | true = Enabled :: Upgrades existing tracks to requested format. wanted mode is controlled by cutoff album list and archive mode is detected automatically. Recommend disabling for archive mode, unless your changing your format. |
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
 | `-e UPDATE_DLCLIENT=FALSE` | TRUE = Enabled :: updates DL Client application from repo on startup | 
 | `-e ENABLE_LAD=TRUE` | TRUE = Enabled :: Runs LAD script automatically every 15 minutes via cronjob |
