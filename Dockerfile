@@ -13,6 +13,7 @@ ENV PathToDLClient="/root/scripts/deemix"
 ENV LidarrImportLocation="/storage/downloads/lidarr/lidarr-import"
 ENV LidarrUrl="http://127.0.0.1:8686"
 ENV DLMODE="wanted"
+ENV MBRAINZMIRROR="http://musicbrainz.org"
 
 RUN \
 	echo "************ install dependencies ************" && \
