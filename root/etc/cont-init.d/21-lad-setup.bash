@@ -97,6 +97,9 @@ fi
 if [ -z "$TRACKUPGRADE" ]; then
 	TRACKUPGRADE="false"
 fi
+if [ -z "$MBRAINZMIRROR" ]; then
+	MBRAINZMIRROR="http://musicbrainz.org"
+fi
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
 
@@ -122,6 +125,7 @@ echo "RequireQuality=\"$RequireQuality\"" >> "/scripts/lad-config"
 echo "python=\"$PYTHON\"" >> "/scripts/lad-config"
 echo "DownloadMode=\"$DLMODE\"" >> "/scripts/lad-config"
 echo "TrackUpgrade=\"$TRACKUPGRADE\"" >> "/scripts/lad-config"
+echo "musicbrainzurl=\"$MBRAINZMIRROR\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
 fi
