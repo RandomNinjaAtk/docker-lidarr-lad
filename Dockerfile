@@ -33,20 +33,18 @@ RUN \
 		python3 \
 		python3-pip \
 		libchromaprint-tools \
-		ffmpeg \
 		imagemagick \
 		python3-pythonmagick \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean && \
-	echo "************ add repos for updated ffmpeg ************" && \
-	apt-get install -y software-properties-common && \
-	add-apt-repository ppa:savoury1/graphics -y && \
-	add-apt-repository ppa:savoury1/multimedia -y && \
-	add-apt-repository ppa:savoury1/ffmpeg4 -y && \
 	echo "************ install updated ffmpeg ************" && \
-	apt-get update && \
-	apt-get install -y ffmpeg && \
+	wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz -O /tmp/ffmpeg.tar.xz && \
+	tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components 1 && \
+	chgrp users /usr/local/bin/ffmpeg && \
+	chgrp users /usr/local/bin/ffprobe && \
+	chmod g+x /usr/local/bin/ffmpeg && \
+	chmod g+x /usr/local/bin/ffprobe && \
 	echo "************ install beets plugin dependencies ************" && \
 	pip3 install --no-cache-dir -U \
 		requests \
