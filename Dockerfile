@@ -45,6 +45,9 @@ RUN \
 	chgrp users /usr/local/bin/ffprobe && \
 	chmod g+x /usr/local/bin/ffmpeg && \
 	chmod g+x /usr/local/bin/ffprobe && \
+	echo "************ install youtube-dl ************" && \
+	sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && \
+	sudo chmod a+rx /usr/local/bin/youtube-dl && \
 	echo "************ install beets plugin dependencies ************" && \
 	pip3 install --no-cache-dir -U \
 		requests \
