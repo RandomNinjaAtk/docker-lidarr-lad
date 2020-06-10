@@ -100,6 +100,15 @@ fi
 if [ -z "$MBRAINZMIRROR" ]; then
 	MBRAINZMIRROR="http://musicbrainz.org"
 fi
+if [ -z "$MBRATELIMIT" ]; then
+	MBRATELIMIT="1"
+fi
+if [ -z "$VIDEOPATH" ]; then
+	VIDEOPATH=""
+fi
+if [ -z "$MVIDEOS" ]; then
+	MVIDEOS="false"
+fi
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
 
@@ -126,6 +135,10 @@ echo "python=\"$PYTHON\"" >> "/scripts/lad-config"
 echo "DownloadMode=\"$DLMODE\"" >> "/scripts/lad-config"
 echo "TrackUpgrade=\"$TRACKUPGRADE\"" >> "/scripts/lad-config"
 echo "musicbrainzurl=\"$MBRAINZMIRROR\"" >> "/scripts/lad-config"
+echo "ratelimit=\"$MBRATELIMIT\"" >> "/scripts/lad-config"
+echo "VideoPath=\"$VIDEOPATH\"" >> "/scripts/lad-config"
+echo "DLVideos=\"$MVIDEOS\"" >> "/scripts/lad-config"
+echo "YoutubeDL=\"/usr/local/bin/youtube-dl\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
 fi
