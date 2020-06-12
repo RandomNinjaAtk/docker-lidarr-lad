@@ -85,7 +85,7 @@ RUN \
 	sed -i "s/\"label\": true/\"label\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"barcode\": true/\"barcode\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeDuplicateArtists\": false/\"removeDuplicateArtists\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"featuredToTitle\": \"0\"/\"removeDuplicateArtists\": \"3\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"featuredToTitle\": \"0\"/\"featuredToTitle\": \"3\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
