@@ -106,8 +106,14 @@ fi
 if [ -z "$VIDEOPATH" ]; then
 	VIDEOPATH=""
 fi
-if [ -z "$MVIDEOS" ]; then
-	MVIDEOS="false"
+if [ -z "$AMODE" ]; then
+	AMODE=""
+fi
+if [ -z "$IMODE" ]; then
+	IMODE=""
+fi
+if [ -z "$DLMODE" ]; then
+	DLMODE=""
 fi
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
@@ -138,6 +144,8 @@ echo "musicbrainzurl=\"$MBRAINZMIRROR\"" >> "/scripts/lad-config"
 echo "ratelimit=\"$MBRATELIMIT\"" >> "/scripts/lad-config"
 echo "VideoPath=\"$VIDEOPATH\"" >> "/scripts/lad-config"
 echo "DLVideos=\"$MVIDEOS\"" >> "/scripts/lad-config"
+echo "AudioMode=\"$AMODE\"" >> "/scripts/lad-config"
+echo "ImportMode=\"$IMODE\"" >> "/scripts/lad-config"
 echo "YoutubeDL=\"/usr/local/bin/youtube-dl\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
