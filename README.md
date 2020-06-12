@@ -39,9 +39,12 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
+| `-e VideoPath=/path/to/vides"` | Location of music videos |
 | `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
 | `-e MBRAINZMIRROR="http://musicbrainz.org"` | OPTIONAL :: Only change if using a different mirror |
-| `-e DLMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted/Cutoff Album lists (TrackUpgrade must be enabled for Cutoff) :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
+| `-e DLMODE="Audio"` | Both or Audio or Video :: "Both" downloads audio and videos; "Audio" downlods only audio files; "Video" only downloads video files |
+| `-e AMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted/Cutoff Album lists (TrackUpgrade must be enabled for Cutoff) :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
+| `-e IMODE="match"` | match or forced or manual :: "match" uses lidarr's matching engine to import; "forced" moves the download into the Lidarr artist directory; "manual" downloads are left in the temp import directory for you to manual import |
 | `-e TRACKUPGRADE=false` | true = Enabled :: Upgrades existing tracks to requested format. wanted mode is controlled by cutoff album list and archive mode is detected automatically. Recommend disabling for archive mode, unless your changing your format. |
 | `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
 | `-e UPDATE_DLCLIENT=FALSE` | TRUE = Enabled :: updates DL Client application from repo on startup | 
