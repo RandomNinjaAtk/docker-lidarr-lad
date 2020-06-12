@@ -34,6 +34,7 @@ RUN \
 		libchromaprint-tools \
 		imagemagick \
 		python3-pythonmagick \
+		kid3-cli \
 		cron && \
 	apt-get purge --auto-remove -y && \
 	apt-get clean && \
