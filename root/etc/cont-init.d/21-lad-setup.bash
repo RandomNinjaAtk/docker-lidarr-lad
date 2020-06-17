@@ -107,13 +107,13 @@ if [ -z "$VIDEOPATH" ]; then
 	VIDEOPATH=""
 fi
 if [ -z "$AMODE" ]; then
-	AMODE=""
+	AMODE="wanted"
 fi
 if [ -z "$IMODE" ]; then
-	IMODE=""
+	IMODE="match"
 fi
 if [ -z "$DLMODE" ]; then
-	DLMODE=""
+	DLMODE="Audio"
 fi
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
