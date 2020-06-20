@@ -61,6 +61,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e DownLoadArtistArtwork=true` | true = enabled :: Uses Lidarr Artist artwork first with a fallback using LAD as the source |
 | `-e TagWithBeets=true` | true = enabled :: enable beet tagging to improve matching accuracy |
 | `-e RequireQuality=false` | true = enabled :: skips importing files that do not match quality settings |
+| `-e CountryCode=us` | Set the country code for preferred video matching, uses Musicbrainz Country Codes, lowercase only. |
+| `-e RequireVideoMatch=true` | true = enabled :: Only keep videos that could be matched to a Musicbrainz music track. |
 
 # LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
@@ -85,6 +87,8 @@ Container images are configured using parameters passed at runtime (such as thos
   * Log file containing list of albums that could not be found using normal or fuzzy matching, automatically cleared every Saturday via cron
 * <strong>musicbrainzerror.log</strong>
   * Log file containing list of artists without links, open log for more details
+* <strong>imvdberror.log</strong>
+  * Log file containing list of artists without links to IMVDb, open log for more details
 * <strong>download.log</strong>
   * Log file containing list of albums that were downloaded, automatically cleared every Saturday via cron
 * <strong>beets-config.yaml</strong>
