@@ -115,6 +115,13 @@ fi
 if [ -z "$DLMODE" ]; then
 	DLMODE="Audio"
 fi
+if [ -z "$CountryCode" ]; then
+	CountryCode="us"
+fi
+if [ -z "$RequireVideoMatch" ]; then
+	RequireVideoMatch="true"
+fi
+
 sed -i "s/\"queueConcurrency\": 3,/\"queueConcurrency\": $CONCURRENCY,/g" "/xdg/deemix/config.json" && \
 
 
@@ -146,6 +153,8 @@ echo "VideoPath=\"$VIDEOPATH\"" >> "/scripts/lad-config"
 echo "DLVideos=\"$MVIDEOS\"" >> "/scripts/lad-config"
 echo "AudioMode=\"$AMODE\"" >> "/scripts/lad-config"
 echo "ImportMode=\"$IMODE\"" >> "/scripts/lad-config"
+echo "CountryCode=\"$CountryCode\"" >> "/scripts/lad-config"
+echo "RequireVideoMatch=\"$RequireVideoMatch\"" >> "/scripts/lad-config"
 echo "YoutubeDL=\"/usr/local/bin/youtube-dl\"" >> "/scripts/lad-config"
 if [ -f "$XDG_CONFIG_HOME/deemix/.arl" ]; then
 	rm "$XDG_CONFIG_HOME/deemix/.arl"
