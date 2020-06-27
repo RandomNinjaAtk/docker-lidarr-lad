@@ -39,7 +39,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e UMASK_SET=022` | control permissions of files and directories created by Lidarr. |
 | `-v /config` | Configuration files for Lidarr. |
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
-| `-e VideoPath=/path/to/vides"` | Location of music videos |
+| `-e VideoPath="/path/to/vides"` | Location of music videos |
 | `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
 | `-e MBRAINZMIRROR="http://musicbrainz.org"` | OPTIONAL :: Only change if using a different mirror |
 | `-e DLMODE="Audio"` | Both or Audio or Video :: "Both" downloads audio and videos; "Audio" downlods only audio files; "Video" only downloads video files |
