@@ -63,7 +63,10 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e RequireQuality=false` | true = enabled :: skips importing files that do not match quality settings |
 | `-e CountryCode=us` | Set the country code for preferred video matching, uses Musicbrainz Country Codes, lowercase only. |
 | `-e RequireVideoMatch=true` | true = enabled :: Only keep videos that could be matched to a Musicbrainz music track. |
+| `-e videoformat="--format bestvideo[vcodec*=avc1]+bestaudio[ext=m4a]"` | For guidence, please see youtube-dl documentation |
+| `-e subtitlelanguage="en"` | Desired Language Code :: For guidence, please see youtube-dl documentation. |
 
+videoformat
 # LAD Information
 * Script is scheduled to run every 15 minutes via a cron job
 
