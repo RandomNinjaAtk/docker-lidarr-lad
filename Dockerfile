@@ -1,7 +1,7 @@
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
 
-ENV VERSION="2.1.6"
+ENV VERSION="2.1.7"
 ENV UPDATE_LAD TRUE
 ENV UPDATE_DLCLIENT TRUE
 ENV ENABLE_LAD TRUE
