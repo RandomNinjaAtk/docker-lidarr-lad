@@ -41,7 +41,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /storage` | Path to your download and music folder. (<strong>DO NOT DELETE, this is a required path</strong>) |
 | `-e VIDEOPATH="/path/to/vides"` | Location of music videos |
 | `-e LidarrUrl="http://127.0.0.1:8686"` | OPTIONAL :: Only needed if utilizing "URL Base" option |
-| `-e MBRAINZMIRROR="http://musicbrainz.org"` | OPTIONAL :: Only change if using a different mirror |
+| `-e MBRAINZMIRROR="https://musicbrainz.org"` | OPTIONAL :: Only change if using a different mirror |
 | `-e DLMODE="Audio"` | Both or Audio or Video :: "Both" downloads audio and videos; "Audio" downlods only audio files; "Video" only downloads video files |
 | `-e AMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted/Cutoff Album lists (TrackUpgrade must be enabled for Cutoff) :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
 | `-e IMODE="match"` | match or forced or manual :: "match" uses lidarr's matching engine to import; "forced" moves the download into the Lidarr artist directory; "manual" downloads are left in the temp import directory for you to manual import |
