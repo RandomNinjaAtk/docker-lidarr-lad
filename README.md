@@ -46,8 +46,6 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e AMODE="wanted"` | wanted or archive :: wanted mode processes Lidarr Wanted/Cutoff Album lists (TrackUpgrade must be enabled for Cutoff) :: archive mode downloads all albums for an aritst, no lidarr matching is used for importing, keeps everything... <strong>WARNING:</strong> When using <strong>archive mode</strong>, do not rename album folders or you will continuely re-download available albums... |
 | `-e IMODE="match"` | match or forced or manual :: "match" uses lidarr's matching engine to import; "forced" moves the download into the Lidarr artist directory; "manual" downloads are left in the temp import directory for you to manual import |
 | `-e TRACKUPGRADE=false` | true = Enabled :: Upgrades existing tracks to requested format. wanted mode is controlled by cutoff album list and archive mode is detected automatically. Recommend disabling for archive mode, unless your changing your format. |
-| `-e UPDATE_LAD=FALSE` | TRUE = Enabled :: updates LAD script from repo on startup |
-| `-e UPDATE_DLCLIENT=FALSE` | TRUE = Enabled :: updates DL Client application from repo on startup | 
 | `-e ENABLE_LAD=TRUE` | TRUE = Enabled :: Runs LAD script automatically every 15 minutes via cronjob |
 | `-e ARL_TOKEN=""` | User token for dl client, for instructions to obtain token: https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken#how-do-i-get-my-usertoken |
 | `-e CONCURRENCY=4` | Number of concurrent tracks to download via the client. Increasing can speed things up but is more resource intensive, lower is safer... |
