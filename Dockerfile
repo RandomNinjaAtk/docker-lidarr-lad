@@ -96,7 +96,7 @@ RUN \
 	sed -i "s/\"removeDuplicateArtists\": false/\"removeDuplicateArtists\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"featuredToTitle\": \"0\"/\"featuredToTitle\": \"3\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"multitagSeparator\": \"default\"/\"multitagSeparator\": \"andFeat\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"singleAlbumArtist\": \"false\"/\"singleAlbumArtist\": \"true\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"singleAlbumArtist\": false/\"singleAlbumArtist\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
