@@ -64,7 +64,7 @@ RUN \
 	mkdir -p ${PathToDLClient} && \
 	mkdir -p "${XDG_CONFIG_HOME}/deemix" && \
 	echo "************ download dl client repo ************" && \
-	git clone https://notabug.org/RemixDev/deemix.git ${PathToDLClient} && \
+	git clone https://codeberg.org/RemixDev/deemix.git ${PathToDLClient} && \
 	echo "************ install pip dependencies ************" && \
 	pip3 install -r /root/scripts/deemix/requirements.txt --user && \
 	echo "************ customize deezloader ************" && \
