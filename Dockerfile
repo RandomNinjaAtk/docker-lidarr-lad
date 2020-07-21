@@ -75,8 +75,11 @@ RUN \
 	sed -i 's/"downloadLocation": "",/"downloadLocation": "\/storage\/downloads\/lidarr\/dlclient",/g' "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"tracknameTemplate\": \"%artist% - %title%\"/\"tracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"albumTracknameTemplate\": \"%tracknumber% - %title%\"/\"albumTracknameTemplate\": \"%discnumber%%tracknumber% - %title% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"artistNameTemplate\": \"%artist%\"/\"artistNameTemplate\": \"%artist% (%artist_id%)\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"albumNameTemplate\": \"%artist% - %album%\"/\"albumNameTemplate\": \"%artist% - %type% - %year% - %album% %explicit%\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"createAlbumFolder\": true/\"createAlbumFolder\": false/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"embeddedArtworkSize\": 800/\"embeddedArtworkSize\": 1800/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"localArtworkSize\": 1400/\"localArtworkSize\": 1800/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeAlbumVersion\": false/\"removeAlbumVersion\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"syncedLyrics\": false/\"syncedLyrics\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"coverImageTemplate\": \"cover\"/\"coverImageTemplate\": \"folder\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
@@ -92,7 +95,8 @@ RUN \
 	sed -i "s/\"savePlaylistAsCompilation\": false/\"savePlaylistAsCompilation\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"removeDuplicateArtists\": false/\"removeDuplicateArtists\": true/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	sed -i "s/\"featuredToTitle\": \"0\"/\"featuredToTitle\": \"3\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
-	sed -i "s/\"multitagSeparator\": \"default\"/\"multitagSeparator\": \"andFeat\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"multiArtistSeparator\": \"default\"/\"multitagSeparator\": \"andFeat\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
+	sed -i "s/\"singleAlbumArtist\": \"false\"/\"singleAlbumArtist\": \"true\"/g" "/root/scripts/deemix/deemix/app/default.json" && \
 	cp "/root/scripts/deemix/deemix/app/default.json" "/xdg/deemix/config.json" && \
 	chmod 0777 -R "/xdg/deemix" && \
 	echo "************ setup cron ************" && \
