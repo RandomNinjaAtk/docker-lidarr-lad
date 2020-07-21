@@ -1,5 +1,10 @@
+ARG ffmpeg_tag=snapshot-ubuntu
+FROM jrottenberg/ffmpeg:${ffmpeg_tag} as ffmpeg
 FROM linuxserver/lidarr:preview
 LABEL maintainer="RandomNinjaAtk"
+
+# Add files from ffmpeg
+COPY --from=ffmpeg /usr/local/ /usr/local/
 
 ENV VERSION="2.1.8"
 ENV UPDATE_LAD TRUE
@@ -39,10 +44,8 @@ RUN \
 	apt-get purge --auto-remove -y && \
 	apt-get clean && \
 	echo "************ install updated ffmpeg ************" && \
-	wget https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz -O /tmp/ffmpeg.tar.xz && \
-	tar -xJf /tmp/ffmpeg.tar.xz -C /usr/local/bin --strip-components 1 && \
 	chgrp users /usr/local/bin/ffmpeg && \
-	chgrp users /usr/local/bin/ffprobe && \
+ 	chgrp users /usr/local/bin/ffprobe && \
 	chmod g+x /usr/local/bin/ffmpeg && \
 	chmod g+x /usr/local/bin/ffprobe && \
 	echo "************ install youtube-dl ************" && \
@@ -53,6 +56,7 @@ RUN \
 		requests \
 		Pillow \
 		pylast \
+		mutagen \
 		pyacoustid && \
 	echo "************ setup lad ************" && \
 	echo "************ make directory ************" && \
@@ -95,6 +99,14 @@ RUN \
 	service cron start && \
 	echo "*/15 * * * *   root   bash /scripts/lad-start.bash > /config/scripts/cron-job.log" >> "/etc/crontab"
 	
+RUN \
+	apt-get update -y && \
+	apt-get install -y --no-install-recommends libva-drm2 libva2 i965-va-driver && \
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
+    
 WORKDIR /
 
 # copy local files
