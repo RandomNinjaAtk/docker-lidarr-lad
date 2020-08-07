@@ -1,5 +1,15 @@
 #!/usr/bin/with-contenv bash
 
+echo "###########################################################################################"
+echo "###################################IMPORTANT MESSAGE#######################################"
+echo "This container is being discontinued..."
+echo ""
+echo "Migrate to the new solution as soon as Possible"
+echo ""
+echo "For more information visit: https://github.com/RandomNinjaAtk/docker-lidarr-lad/wiki/Migration"
+echo "###########################################################################################"
+sleep 5m
+
 if mkdir /scripts/00-lad-start.exclusivelock; then
   
 	rm /config/scripts/script-run.log
