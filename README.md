@@ -5,6 +5,9 @@ This repository is now deprecated, will no longer be updated and is being set to
 * For Audio: https://github.com/RandomNinjaAtk/docker-amd
 * For Videos: https://github.com/RandomNinjaAtk/docker-amvd
 
+# Migration info:
+https://github.com/RandomNinjaAtk/docker-lidarr-lad/wiki/Migration
+
 # [RandomNinjaAtk/lidarr-lad](https://github.com/RandomNinjaAtk/docker-lidarr-lad)
 
 [Lidarr](https://github.com/lidarr/Lidarr) is a music collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new tracks from your favorite artists and will grab, sort and rename them. It can also be configured to automatically upgrade the quality of files already downloaded when a better quality format becomes available.
