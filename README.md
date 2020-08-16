@@ -1,3 +1,9 @@
+# Deprecated
+
+This repository is now deprecated, will no longer be updated and is being set to archived. The script used for this container has been split into multiple scripts going forward to simplify maintenance.
+* For Lidarr: https://github.com/linuxserver/docker-lidarr (Preview Tag, same version of Lidarr used fo this container...)
+* For Audio: https://github.com/RandomNinjaAtk/docker-amd
+* For Videos: https://github.com/RandomNinjaAtk/docker-amvd
 
 # [RandomNinjaAtk/lidarr-lad](https://github.com/RandomNinjaAtk/docker-lidarr-lad)
 
